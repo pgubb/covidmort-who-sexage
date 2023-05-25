@@ -18,9 +18,9 @@ This paper seeks to understand how mortality risks from COVID for men and women 
 
 ## Data
 
-This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups: 0-25, 25-39, 40-49, 50-59, 60-69, 70-79 and 80+. 
+This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:"0-24" , "25-34" , 35-44", "45-54", "55-64", "65-74", "75-84", ">85".
 
-Out of 194 countries in the WHO database, only 35 countries (18 percent, mostly from Europe) have excess death estimates based on reported all-cause death records disaggregated by gender for both 2020 and 2021. 53 countries have reported all-cause death data for both sexes combined for both 2020 and 2021.  For nearly all lower -middle- and low-income countries, all-cause deaths are predicted. 
+Out of 195 countries in the WHO database, 75 countries have excess death estimates based on reported all-cause death records disaggregated by gender for 2020 and of these, 61 also use reported deaths by gender and age for 2021.
 
 Inclusion criteria for this analysis are as follows: 
 
