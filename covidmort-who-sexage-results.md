@@ -24,11 +24,11 @@ Out of 194 countries in the WHO database, only 35 countries (18 percent, mostly 
 
 Inclusion criteria for this analysis are as follows: 
 
-- Age groups at or above 40 years of age
+- Age groups at or above 45 years of age
 - Countries with a total population of at least 1m 
 - Countries with a cumulative official COVID-19 death toll of at least 2000 deaths at the end of 2020
 - Countries with reported all-cause data disaggregated by age and sex in 2020
-- The following 36 countries are included in this analysis: Austria, Belgium, Bulgaria, Brazil, Switzerland, Chile, Colombia, Czechia, Germany, Ecuador, Spain, France, The United Kingdom, Greece, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Mexico, Netherlands, Peru, Poland, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Ukraine, USA, South Africa
+- The following 51 countries are included in this analysis: Argentina, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Republic of Moldova, Mexico, Netherlands, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Tunisia, Ukraine, USA, South Africa
 
 ## Results
 
@@ -83,215 +83,215 @@ The following set of figures display observed and predicted values of mortality 
 
 ::: {.cell fig.asp='0.818'}
 
-#### Austria 
-- Total population: 9,006,400 
-- Total official COVID deaths in 2020 (Our World in Data): 7,380 
-- Total official COVID deaths in 2021  (Our World in Data): 9,303 
-- Total excess deaths in 2020  (WHO): 6,536 
-- Total excess deaths in 2021  (WHO): 5,405 
+#### Argentina 
+- Total population: 44,985,105 
+- Total official COVID deaths in 2020 (Our World in Data): 48,271 
+- Total official COVID deaths in 2021  (Our World in Data): 69,905 
+- Total excess deaths in 2020  (WHO): 35,840.96 
+- Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-1.png){width=960}
 :::
 
 
-#### Belgium 
-- Total population: 11,589,616 
-- Total official COVID deaths in 2020 (Our World in Data): 19,674 
-- Total official COVID deaths in 2021  (Our World in Data): 8,682 
-- Total excess deaths in 2020  (WHO): 16,968 
-- Total excess deaths in 2021  (WHO): 951 
+#### Austria 
+- Total population: 8,888,592 
+- Total official COVID deaths in 2020 (Our World in Data): 7,379 
+- Total official COVID deaths in 2021  (Our World in Data): 9,319 
+- Total excess deaths in 2020  (WHO): 8,087.427 
+- Total excess deaths in 2021  (WHO): 7,886.081 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-2.png){width=960}
 :::
 
 
-#### Bulgaria 
-- Total population: 6,948,445 
-- Total official COVID deaths in 2020 (Our World in Data): 7,515 
-- Total official COVID deaths in 2021  (Our World in Data): 23,375 
-- Total excess deaths in 2020  (WHO): 16,880 
-- Total excess deaths in 2021  (WHO): 40,615 
+#### Azerbaijan 
+- Total population: 10,282,158 
+- Total official COVID deaths in 2020 (Our World in Data): 2,575 
+- Total official COVID deaths in 2021  (Our World in Data): 5,771 
+- Total excess deaths in 2020  (WHO): 12,039.15 
+- Total excess deaths in 2021  (WHO): 21,581.59 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-3.png){width=960}
 :::
 
 
-#### Brazil 
-- Total population: 212,559,409 
-- Total official COVID deaths in 2020 (Our World in Data): 192,681 
-- Total official COVID deaths in 2021  (Our World in Data): 426,136 
-- Total excess deaths in 2020  (WHO): 210,810 
-- Total excess deaths in 2021  (WHO):  
+#### Belgium 
+- Total population: 11,533,459 
+- Total official COVID deaths in 2020 (Our World in Data): 19,674 
+- Total official COVID deaths in 2021  (Our World in Data): 8,682 
+- Total excess deaths in 2020  (WHO): 16,540.23 
+- Total excess deaths in 2021  (WHO): 3,794.365 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-4.png){width=960}
 :::
 
 
-#### Switzerland 
-- Total population: 8,654,618 
-- Total official COVID deaths in 2020 (Our World in Data): 7,528 
-- Total official COVID deaths in 2021  (Our World in Data): 4,393 
-- Total excess deaths in 2020  (WHO): 7,540 
-- Total excess deaths in 2021  (WHO): 707 
+#### Bulgaria 
+- Total population: 6,967,018 
+- Total official COVID deaths in 2020 (Our World in Data): 7,515 
+- Total official COVID deaths in 2021  (Our World in Data): 23,375 
+- Total excess deaths in 2020  (WHO): 17,804.05 
+- Total excess deaths in 2021  (WHO): 42,715.42 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-5.png){width=960}
 :::
 
 
-#### Chile 
-- Total population: 19,116,209 
-- Total official COVID deaths in 2020 (Our World in Data): 16,499 
-- Total official COVID deaths in 2021  (Our World in Data): 22,597 
-- Total excess deaths in 2020  (WHO): 14,577 
-- Total excess deaths in 2021  (WHO): 24,121 
+#### Bosnia and Herzegovina 
+- Total population: 3,314,350 
+- Total official COVID deaths in 2020 (Our World in Data): 4,050 
+- Total official COVID deaths in 2021  (Our World in Data): 9,378 
+- Total excess deaths in 2020  (WHO): 6,792.844 
+- Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-6.png){width=960}
 :::
 
 
-#### Colombia 
-- Total population: 50,882,884 
-- Total official COVID deaths in 2020 (Our World in Data): 42,620 
-- Total official COVID deaths in 2021  (Our World in Data): 87,246 
-- Total excess deaths in 2020  (WHO): 54,062 
-- Total excess deaths in 2021  (WHO):  
+#### Bolivia (Plurinational State of) 
+- Total population: 11,934,333 
+- Total official COVID deaths in 2020 (Our World in Data): 9,135 
+- Total official COVID deaths in 2021  (Our World in Data): 10,515 
+- Total excess deaths in 2020  (WHO): 33,888.56 
+- Total excess deaths in 2021  (WHO): 47,020.77 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-7.png){width=960}
 :::
 
 
-#### Czechia 
-- Total population: 10,708,982 
-- Total official COVID deaths in 2020 (Our World in Data): 11,888 
-- Total official COVID deaths in 2021  (Our World in Data): 24,443 
-- Total excess deaths in 2020  (WHO): 13,450 
-- Total excess deaths in 2021  (WHO): 23,590 
+#### Brazil 
+- Total population: 213,114,918 
+- Total official COVID deaths in 2020 (Our World in Data): 192,681 
+- Total official COVID deaths in 2021  (Our World in Data): 426,136 
+- Total excess deaths in 2020  (WHO): 189,945.8 
+- Total excess deaths in 2021  (WHO): 467,480.1 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-8.png){width=960}
 :::
 
 
-#### Germany 
-- Total population: 83,783,945 
-- Total official COVID deaths in 2020 (Our World in Data): 50,442 
-- Total official COVID deaths in 2021  (Our World in Data): 67,991 
-- Total excess deaths in 2020  (WHO): 66,793 
-- Total excess deaths in 2021  (WHO): 128,194 
+#### Canada 
+- Total population: 37,818,806 
+- Total official COVID deaths in 2020 (Our World in Data): 15,274 
+- Total official COVID deaths in 2021  (Our World in Data): 14,684 
+- Total excess deaths in 2020  (WHO): 14,551.54 
+- Total excess deaths in 2021  (WHO): 11,949.19 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-9.png){width=960}
 :::
 
 
-#### Ecuador 
-- Total population: 17,643,060 
-- Total official COVID deaths in 2020 (Our World in Data): 14,023 
-- Total official COVID deaths in 2021  (Our World in Data): 19,646 
-- Total excess deaths in 2020  (WHO): 46,402 
-- Total excess deaths in 2021  (WHO):  
+#### Switzerland 
+- Total population: 8,619,390 
+- Total official COVID deaths in 2020 (Our World in Data): 7,528 
+- Total official COVID deaths in 2021  (Our World in Data): 4,393 
+- Total excess deaths in 2020  (WHO): 8,808.004 
+- Total excess deaths in 2021  (WHO): 3,683.951 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-10.png){width=960}
 :::
 
 
-#### Spain 
-- Total population: 46,754,783 
-- Total official COVID deaths in 2020 (Our World in Data): 54,459 
-- Total official COVID deaths in 2021  (Our World in Data): 37,229 
-- Total excess deaths in 2020  (WHO): 72,574 
-- Total excess deaths in 2021  (WHO): 31,361 
+#### Chile 
+- Total population: 19,276,612 
+- Total official COVID deaths in 2020 (Our World in Data): 16,499 
+- Total official COVID deaths in 2021  (Our World in Data): 22,597 
+- Total excess deaths in 2020  (WHO): 14,771.02 
+- Total excess deaths in 2021  (WHO): 23,894.96 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-11.png){width=960}
 :::
 
 
-#### France 
-- Total population: 65,273,512 
-- Total official COVID deaths in 2020 (Our World in Data): 64,004 
-- Total official COVID deaths in 2021  (Our World in Data): 56,958 
-- Total excess deaths in 2020  (WHO): 49,178 
-- Total excess deaths in 2021  (WHO): 32,671 
+#### Colombia 
+- Total population: 50,911,158 
+- Total official COVID deaths in 2020 (Our World in Data): 42,620 
+- Total official COVID deaths in 2021  (Our World in Data): 87,246 
+- Total excess deaths in 2020  (WHO): 53,886.16 
+- Total excess deaths in 2021  (WHO): 108,332.4 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-12.png){width=960}
 :::
 
 
-#### The United Kingdom 
-- Total population: 67,886,004 
-- Total official COVID deaths in 2020 (Our World in Data): 75,239 
-- Total official COVID deaths in 2021  (Our World in Data): 74,688 
-- Total excess deaths in 2020  (WHO): 85,504 
-- Total excess deaths in 2021  (WHO): 63,392 
+#### Costa Rica 
+- Total population: 5,119,855 
+- Total official COVID deaths in 2020 (Our World in Data): 2,156 
+- Total official COVID deaths in 2021  (Our World in Data): 5,198 
+- Total excess deaths in 2020  (WHO): 738.0506 
+- Total excess deaths in 2021  (WHO): 4,704.336 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-13.png){width=960}
 :::
 
 
-#### Greece 
-- Total population: 10,423,056 
-- Total official COVID deaths in 2020 (Our World in Data): 4,788 
-- Total official COVID deaths in 2021  (Our World in Data): 15,920 
-- Total excess deaths in 2020  (WHO): 4,043 
-- Total excess deaths in 2021  (WHO): 15,351 
+#### Czechia 
+- Total population: 10,514,740 
+- Total official COVID deaths in 2020 (Our World in Data): 11,888 
+- Total official COVID deaths in 2021  (Our World in Data): 24,444 
+- Total excess deaths in 2020  (WHO): 16,599.66 
+- Total excess deaths in 2021  (WHO): 26,648.28 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-14.png){width=960}
 :::
 
 
-#### Croatia 
-- Total population: 4,105,268 
-- Total official COVID deaths in 2020 (Our World in Data): 3,860 
-- Total official COVID deaths in 2021  (Our World in Data): 8,633 
-- Total excess deaths in 2020  (WHO): 5,502 
-- Total excess deaths in 2021  (WHO): 11,676 
+#### Germany 
+- Total population: 83,116,786 
+- Total official COVID deaths in 2020 (Our World in Data): 50,447 
+- Total official COVID deaths in 2021  (Our World in Data): 68,023 
+- Total excess deaths in 2020  (WHO): 34,514.19 
+- Total excess deaths in 2021  (WHO): 66,990.79 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-15.png){width=960}
 :::
 
 
-#### Hungary 
-- Total population: 9,660,350 
-- Total official COVID deaths in 2020 (Our World in Data): 9,537 
-- Total official COVID deaths in 2021  (Our World in Data): 29,649 
-- Total excess deaths in 2020  (WHO): 11,072 
-- Total excess deaths in 2021  (WHO): 25,427 
+#### Dominican Republic 
+- Total population: 10,994,170 
+- Total official COVID deaths in 2020 (Our World in Data): 2,409 
+- Total official COVID deaths in 2021  (Our World in Data): 1,837 
+- Total excess deaths in 2020  (WHO): 2,333.078 
+- Total excess deaths in 2021  (WHO): 6,689.009 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-16.png){width=960}
 :::
 
 
-#### Ireland 
-- Total population: 4,937,796 
-- Total official COVID deaths in 2020 (Our World in Data): 2,264 
-- Total official COVID deaths in 2021  (Our World in Data): 3,824 
-- Total excess deaths in 2020  (WHO): 420 
-- Total excess deaths in 2021  (WHO):  
+#### Ecuador 
+- Total population: 17,580,085 
+- Total official COVID deaths in 2020 (Our World in Data): 14,023 
+- Total official COVID deaths in 2021  (Our World in Data): 19,646 
+- Total excess deaths in 2020  (WHO): 46,706.66 
+- Total excess deaths in 2021  (WHO): 32,874.78 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-17.png){width=960}
 :::
 
 
-#### Iran (Islamic Republic of) 
-- Total population: 83,992,953 
-- Total official COVID deaths in 2020 (Our World in Data): 55,095 
-- Total official COVID deaths in 2021  (Our World in Data): 76,477 
-- Total excess deaths in 2020  (WHO): 108,918 
+#### Egypt 
+- Total population: 107,450,137 
+- Total official COVID deaths in 2020 (Our World in Data): 7,520 
+- Total official COVID deaths in 2021  (Our World in Data): 14,175 
+- Total excess deaths in 2020  (WHO): 107,524 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
@@ -299,131 +299,131 @@ The following set of figures display observed and predicted values of mortality 
 :::
 
 
-#### Iraq 
-- Total population: 40,222,503 
-- Total official COVID deaths in 2020 (Our World in Data): 12,808 
-- Total official COVID deaths in 2021  (Our World in Data): 11,346 
-- Total excess deaths in 2020  (WHO): 40,399 
-- Total excess deaths in 2021  (WHO):  
+#### Spain 
+- Total population: 47,233,572 
+- Total official COVID deaths in 2020 (Our World in Data): 54,459 
+- Total official COVID deaths in 2021  (Our World in Data): 37,229 
+- Total excess deaths in 2020  (WHO): 75,201.66 
+- Total excess deaths in 2021  (WHO): 32,336.08 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-19.png){width=960}
 :::
 
 
-#### Israel 
-- Total population: 8,655,541 
-- Total official COVID deaths in 2020 (Our World in Data): 3,336 
-- Total official COVID deaths in 2021  (Our World in Data): 4,923 
-- Total excess deaths in 2020  (WHO): 2,434 
-- Total excess deaths in 2021  (WHO): 3,744 
+#### France 
+- Total population: 64,291,311 
+- Total official COVID deaths in 2020 (Our World in Data): 64,004 
+- Total official COVID deaths in 2021  (Our World in Data): 56,958 
+- Total excess deaths in 2020  (WHO): 50,200.12 
+- Total excess deaths in 2021  (WHO): 37,445.36 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-20.png){width=960}
 :::
 
 
-#### Italy 
-- Total population: 60,461,828 
-- Total official COVID deaths in 2020 (Our World in Data): 73,604 
-- Total official COVID deaths in 2021  (Our World in Data): 63,643 
-- Total excess deaths in 2020  (WHO): 100,432 
-- Total excess deaths in 2021  (WHO): 60,368 
+#### The United Kingdom 
+- Total population: 66,921,778 
+- Total official COVID deaths in 2020 (Our World in Data): 93,317 
+- Total official COVID deaths in 2021  (Our World in Data): 83,496 
+- Total excess deaths in 2020  (WHO): 81,734.67 
+- Total excess deaths in 2021  (WHO): 65,350.31 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-21.png){width=960}
 :::
 
 
-#### Japan 
-- Total population: 126,476,458 
-- Total official COVID deaths in 2020 (Our World in Data): 3,414 
-- Total official COVID deaths in 2021  (Our World in Data): 14,979 
-- Total excess deaths in 2020  (WHO): -30,138 
-- Total excess deaths in 2021  (WHO):  
+#### Georgia 
+- Total population: 3,762,236 
+- Total official COVID deaths in 2020 (Our World in Data): 2,505 
+- Total official COVID deaths in 2021  (Our World in Data): 11,295 
+- Total excess deaths in 2020  (WHO): 5,738.193 
+- Total excess deaths in 2021  (WHO): 17,255.76 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-22.png){width=960}
 :::
 
 
-#### Kazakhstan 
-- Total population: 18,776,707 
-- Total official COVID deaths in 2020 (Our World in Data): 2,749 
-- Total official COVID deaths in 2021  (Our World in Data): 15,478 
-- Total excess deaths in 2020  (WHO): 28,493 
-- Total excess deaths in 2021  (WHO): 47,721 
+#### Greece 
+- Total population: 10,484,757 
+- Total official COVID deaths in 2020 (Our World in Data): 4,788 
+- Total official COVID deaths in 2021  (Our World in Data): 15,920 
+- Total excess deaths in 2020  (WHO): 7,277.952 
+- Total excess deaths in 2021  (WHO): 19,485.75 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-23.png){width=960}
 :::
 
 
-#### Mexico 
-- Total population: 128,932,753 
-- Total official COVID deaths in 2020 (Our World in Data): 147,623 
-- Total official COVID deaths in 2021  (Our World in Data): 156,199 
-- Total excess deaths in 2020  (WHO): 314,541 
-- Total excess deaths in 2021  (WHO):  
+#### Guatemala 
+- Total population: 17,355,773 
+- Total official COVID deaths in 2020 (Our World in Data): 4,803 
+- Total official COVID deaths in 2021  (Our World in Data): 11,299 
+- Total excess deaths in 2020  (WHO): 12,580.13 
+- Total excess deaths in 2021  (WHO): 36,476.57 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-24.png){width=960}
 :::
 
 
-#### Netherlands 
-- Total population: 17,134,873 
-- Total official COVID deaths in 2020 (Our World in Data): 11,296 
-- Total official COVID deaths in 2021  (Our World in Data): 9,589 
-- Total excess deaths in 2020  (WHO): 14,482 
-- Total excess deaths in 2021  (WHO): 14,731 
+#### Croatia 
+- Total population: 4,089,053 
+- Total official COVID deaths in 2020 (Our World in Data): 3,860 
+- Total official COVID deaths in 2021  (Our World in Data): 8,633 
+- Total excess deaths in 2020  (WHO): 5,870.759 
+- Total excess deaths in 2021  (WHO): 12,268.29 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-25.png){width=960}
 :::
 
 
-#### Peru 
-- Total population: 32,971,846 
-- Total official COVID deaths in 2020 (Our World in Data): 93,066 
-- Total official COVID deaths in 2021  (Our World in Data): 109,518 
-- Total excess deaths in 2020  (WHO): 133,817 
-- Total excess deaths in 2021  (WHO):  
+#### Hungary 
+- Total population: 9,733,129 
+- Total official COVID deaths in 2020 (Our World in Data): 9,537 
+- Total official COVID deaths in 2021  (Our World in Data): 29,649 
+- Total excess deaths in 2020  (WHO): 12,046.75 
+- Total excess deaths in 2021  (WHO): 26,972.14 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-26.png){width=960}
 :::
 
 
-#### Poland 
-- Total population: 37,846,605 
-- Total official COVID deaths in 2020 (Our World in Data): 28,642 
-- Total official COVID deaths in 2021  (Our World in Data): 68,416 
-- Total excess deaths in 2020  (WHO): 60,687 
-- Total excess deaths in 2021  (WHO): 96,844 
+#### Ireland 
+- Total population: 4,939,931 
+- Total official COVID deaths in 2020 (Our World in Data): 2,265 
+- Total official COVID deaths in 2021  (Our World in Data): 3,826 
+- Total excess deaths in 2020  (WHO): 1,601.448 
+- Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-27.png){width=960}
 :::
 
 
-#### Romania 
-- Total population: 19,237,682 
-- Total official COVID deaths in 2020 (Our World in Data): 15,596 
-- Total official COVID deaths in 2021  (Our World in Data): 43,118 
-- Total excess deaths in 2020  (WHO): 34,995 
-- Total excess deaths in 2021  (WHO): 71,917 
+#### Iran (Islamic Republic of) 
+- Total population: 87,266,417 
+- Total official COVID deaths in 2020 (Our World in Data): 54,946 
+- Total official COVID deaths in 2021  (Our World in Data): 76,581 
+- Total excess deaths in 2020  (WHO): 136,293.9 
+- Total excess deaths in 2021  (WHO): 159,238.4 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-28.png){width=960}
 :::
 
 
-#### Russian Federation 
-- Total population: 145,934,460 
-- Total official COVID deaths in 2020 (Our World in Data): 57,019 
-- Total official COVID deaths in 2021  (Our World in Data): 251,841 
-- Total excess deaths in 2020  (WHO): 369,306 
+#### Iraq 
+- Total population: 42,553,401 
+- Total official COVID deaths in 2020 (Our World in Data): 12,800 
+- Total official COVID deaths in 2021  (Our World in Data): 11,351 
+- Total excess deaths in 2020  (WHO): 28,125.58 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
@@ -431,87 +431,267 @@ The following set of figures display observed and predicted values of mortality 
 :::
 
 
-#### Serbia 
-- Total population: 8,737,370 
-- Total official COVID deaths in 2020 (Our World in Data): 3,163 
-- Total official COVID deaths in 2021  (Our World in Data): 9,525 
-- Total excess deaths in 2020  (WHO): 17,173 
-- Total excess deaths in 2021  (WHO): 38,470 
+#### Israel 
+- Total population: 8,746,610 
+- Total official COVID deaths in 2020 (Our World in Data): 3,336 
+- Total official COVID deaths in 2021  (Our World in Data): 4,923 
+- Total excess deaths in 2020  (WHO): 3,177.944 
+- Total excess deaths in 2021  (WHO): 4,795.487 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-30.png){width=960}
 :::
 
 
-#### Slovakia 
-- Total population: 5,459,643 
-- Total official COVID deaths in 2020 (Our World in Data): 2,138 
-- Total official COVID deaths in 2021  (Our World in Data): 14,497 
-- Total excess deaths in 2020  (WHO): 5,463 
-- Total excess deaths in 2021  (WHO): 18,857 
+#### Italy 
+- Total population: 59,314,503 
+- Total official COVID deaths in 2020 (Our World in Data): 73,604 
+- Total official COVID deaths in 2021  (Our World in Data): 63,643 
+- Total excess deaths in 2020  (WHO): 109,157.4 
+- Total excess deaths in 2021  (WHO): 75,106.86 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-31.png){width=960}
 :::
 
 
-#### Slovenia 
-- Total population: 2,078,932 
-- Total official COVID deaths in 2020 (Our World in Data): 2,984 
-- Total official COVID deaths in 2021  (Our World in Data): 3,145 
-- Total excess deaths in 2020  (WHO): 3,346 
-- Total excess deaths in 2021  (WHO): 2,238 
+#### Japan 
+- Total population: 124,706,807 
+- Total official COVID deaths in 2020 (Our World in Data): 3,414 
+- Total official COVID deaths in 2021  (Our World in Data): 14,979 
+- Total excess deaths in 2020  (WHO): -21,921.16 
+- Total excess deaths in 2021  (WHO): 22,117.4 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-32.png){width=960}
 :::
 
 
-#### Sweden 
-- Total population: 10,099,270 
-- Total official COVID deaths in 2020 (Our World in Data): 9,616 
-- Total official COVID deaths in 2021  (Our World in Data): 5,719 
-- Total excess deaths in 2020  (WHO): 8,502 
-- Total excess deaths in 2021  (WHO): 2,751 
+#### Kazakhstan 
+- Total population: 18,973,597 
+- Total official COVID deaths in 2020 (Our World in Data): 2,749 
+- Total official COVID deaths in 2021  (Our World in Data): 15,478 
+- Total excess deaths in 2020  (WHO): 31,218.43 
+- Total excess deaths in 2021  (WHO): 52,050.25 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-33.png){width=960}
 :::
 
 
-#### Ukraine 
-- Total population: 43,733,759 
-- Total official COVID deaths in 2020 (Our World in Data): 18,533 
-- Total official COVID deaths in 2021  (Our World in Data): 77,366 
-- Total excess deaths in 2020  (WHO): 45,366 
-- Total excess deaths in 2021  (WHO):  
+#### Republic of Moldova 
+- Total population: 3,082,703 
+- Total official COVID deaths in 2020 (Our World in Data): 3,110 
+- Total official COVID deaths in 2021  (Our World in Data): 7,159 
+- Total excess deaths in 2020  (WHO): 5,436.351 
+- Total excess deaths in 2021  (WHO): 10,905.46 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-34.png){width=960}
 :::
 
 
-#### USA 
-- Total population: 331,002,647 
-- Total official COVID deaths in 2020 (Our World in Data): 352,004 
-- Total official COVID deaths in 2021  (Our World in Data): 467,051 
-- Total excess deaths in 2020  (WHO): 465,705 
-- Total excess deaths in 2021  (WHO): 466,755 
+#### Mexico 
+- Total population: 125,917,904 
+- Total official COVID deaths in 2020 (Our World in Data): 147,623 
+- Total official COVID deaths in 2021  (Our World in Data): 156,199 
+- Total excess deaths in 2020  (WHO): 297,154 
+- Total excess deaths in 2021  (WHO): 315,216 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-35.png){width=960}
 :::
 
 
-#### South Africa 
-- Total population: 59,308,690 
-- Total official COVID deaths in 2020 (Our World in Data): 28,033 
-- Total official COVID deaths in 2021  (Our World in Data): 63,028 
-- Total excess deaths in 2020  (WHO): 54,401 
-- Total excess deaths in 2021  (WHO):  
+#### Netherlands 
+- Total population: 17,403,110 
+- Total official COVID deaths in 2020 (Our World in Data): 11,296 
+- Total official COVID deaths in 2021  (Our World in Data): 9,589 
+- Total excess deaths in 2020  (WHO): 14,530.01 
+- Total excess deaths in 2021  (WHO): 16,001.69 
 
 ::: {.cell-output-display}
 ![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-36.png){width=960}
+:::
+
+
+#### Panama 
+- Total population: 4,291,548 
+- Total official COVID deaths in 2020 (Our World in Data): 3,933 
+- Total official COVID deaths in 2021  (Our World in Data): 3,492 
+- Total excess deaths in 2020  (WHO): 2,861.276 
+- Total excess deaths in 2021  (WHO):  
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-37.png){width=960}
+:::
+
+
+#### Peru 
+- Total population: 33,290,096 
+- Total official COVID deaths in 2020 (Our World in Data): 93,066 
+- Total official COVID deaths in 2021  (Our World in Data): 109,518 
+- Total excess deaths in 2020  (WHO): 100,106.6 
+- Total excess deaths in 2021  (WHO): 124,084.2 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-38.png){width=960}
+:::
+
+
+#### Poland 
+- Total population: 38,358,520 
+- Total official COVID deaths in 2020 (Our World in Data): 28,642 
+- Total official COVID deaths in 2021  (Our World in Data): 68,416 
+- Total excess deaths in 2020  (WHO): 63,032.16 
+- Total excess deaths in 2021  (WHO): 100,112.2 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-39.png){width=960}
+:::
+
+
+#### Portugal 
+- Total population: 10,274,559 
+- Total official COVID deaths in 2020 (Our World in Data): 6,842 
+- Total official COVID deaths in 2021  (Our World in Data): 12,095 
+- Total excess deaths in 2020  (WHO): 11,245.03 
+- Total excess deaths in 2021  (WHO): 12,245.21 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-40.png){width=960}
+:::
+
+
+#### Paraguay 
+- Total population: 6,615,894 
+- Total official COVID deaths in 2020 (Our World in Data): 2,220 
+- Total official COVID deaths in 2021  (Our World in Data): 14,404 
+- Total excess deaths in 2020  (WHO): 1,423.428 
+- Total excess deaths in 2021  (WHO): 18,371.62 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-41.png){width=960}
+:::
+
+
+#### Romania 
+- Total population: 19,411,764 
+- Total official COVID deaths in 2020 (Our World in Data): 15,596 
+- Total official COVID deaths in 2021  (Our World in Data): 43,118 
+- Total excess deaths in 2020  (WHO): 37,164.14 
+- Total excess deaths in 2021  (WHO): 76,235.53 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-42.png){width=960}
+:::
+
+
+#### Russian Federation 
+- Total population: 145,420,443 
+- Total official COVID deaths in 2020 (Our World in Data): 57,019 
+- Total official COVID deaths in 2021  (Our World in Data): 251,841 
+- Total excess deaths in 2020  (WHO): 380,136.8 
+- Total excess deaths in 2021  (WHO): 713,027.8 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-43.png){width=960}
+:::
+
+
+#### Serbia 
+- Total population: 7,347,278 
+- Total official COVID deaths in 2020 (Our World in Data): 3,163 
+- Total official COVID deaths in 2021  (Our World in Data): 9,525 
+- Total excess deaths in 2020  (WHO): 16,724.08 
+- Total excess deaths in 2021  (WHO): 36,442.32 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-44.png){width=960}
+:::
+
+
+#### Slovakia 
+- Total population: 5,449,592 
+- Total official COVID deaths in 2020 (Our World in Data): 2,138 
+- Total official COVID deaths in 2021  (Our World in Data): 14,497 
+- Total excess deaths in 2020  (WHO): 5,849.537 
+- Total excess deaths in 2021  (WHO): 20,291.01 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-45.png){width=960}
+:::
+
+
+#### Slovenia 
+- Total population: 2,113,213 
+- Total official COVID deaths in 2020 (Our World in Data): 2,981 
+- Total official COVID deaths in 2021  (Our World in Data): 3,139 
+- Total excess deaths in 2020  (WHO): 1,317.898 
+- Total excess deaths in 2021  (WHO): 241.1147 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-46.png){width=960}
+:::
+
+
+#### Sweden 
+- Total population: 10,347,118 
+- Total official COVID deaths in 2020 (Our World in Data): 9,706 
+- Total official COVID deaths in 2021  (Our World in Data): 5,639 
+- Total excess deaths in 2020  (WHO): 8,932.776 
+- Total excess deaths in 2021  (WHO): 3,273.921 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-47.png){width=960}
+:::
+
+
+#### Tunisia 
+- Total population: 12,156,148 
+- Total official COVID deaths in 2020 (Our World in Data): 4,620 
+- Total official COVID deaths in 2021  (Our World in Data): 20,944 
+- Total excess deaths in 2020  (WHO): 4,322.457 
+- Total excess deaths in 2021  (WHO):  
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-48.png){width=960}
+:::
+
+
+#### Ukraine 
+- Total population: 43,843,015 
+- Total official COVID deaths in 2020 (Our World in Data): 18,533 
+- Total official COVID deaths in 2021  (Our World in Data): 77,366 
+- Total excess deaths in 2020  (WHO): 43,125.64 
+- Total excess deaths in 2021  (WHO): 144,710.5 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-49.png){width=960}
+:::
+
+
+#### USA 
+- Total population: 335,410,796 
+- Total official COVID deaths in 2020 (Our World in Data): 352,004 
+- Total official COVID deaths in 2021  (Our World in Data): 467,051 
+- Total excess deaths in 2020  (WHO): 467,312.8 
+- Total excess deaths in 2021  (WHO): 501,112.5 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-50.png){width=960}
+:::
+
+
+#### South Africa 
+- Total population: 58,778,516 
+- Total official COVID deaths in 2020 (Our World in Data): 28,033 
+- Total official COVID deaths in 2021  (Our World in Data): 63,028 
+- Total excess deaths in 2020  (WHO): 56,967.63 
+- Total excess deaths in 2021  (WHO): 189,834.3 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-51.png){width=960}
 :::
 :::
 

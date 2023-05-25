@@ -158,7 +158,7 @@ plot_obs <- function(observations, slct_metric = "Relative risk (Males/Females)"
     facet_wrap(~Country, scales = "free_y") +
 
     # Plot elements
-    geom_hline(yintercept = 0, size = 1.75, color = "white") +
+    geom_hline(yintercept = 1, size = 1.75, color = "white") +
 
     geom_line() +
     geom_point(shape=21,fill ="white", size = 2, stroke = 1, show.legend = TRUE) +
@@ -200,7 +200,7 @@ plot_obs <- function(observations, slct_metric = "Relative risk (Males/Females)"
 plot_data_v_income <- function(data, slct_metric, income_data, group_data = NULL, caption) {
 
 # Parameter for loess fit
-  alpha <- 0.75
+  alpha <- 0.85
 
 # Data type (Prediction v Observation)
   datatype <- unique(data$type)
@@ -212,11 +212,11 @@ plot_data_v_income <- function(data, slct_metric, income_data, group_data = NULL
   subtitle <- glue::glue(
     "
     Age-groups:
-    <span style = 'color:{colors[1]};'>40-49 years</span>,
-    <span style = 'color:{colors[2]};'>50-59</span>,
-    <span style = 'color:{colors[3]};'>60-69</span>,
-    <span style = 'color:{colors[4]};'>70-79</span>,
-    <span style = 'color:{colors[5]};'>80+</span>
+    <span style = 'color:{colors[1]};'>45-54 years</span>,
+    <span style = 'color:{colors[2]};'>55-65</span>,
+    <span style = 'color:{colors[3]};'>65-74</span>,
+    <span style = 'color:{colors[4]};'>75-84</span>,
+    <span style = 'color:{colors[5]};'>85+</span>
     "
   )
 
