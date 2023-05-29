@@ -81,44 +81,6 @@ Inclusion criteria for this analysis are as follows:
 #### Sex ratio of mortality by age, year and country income quintiles
 
 ::: {.cell}
-
-```{.r .cell-code}
-sims_summary <- prep_sims_summary_by_inc_quint(sims, income)
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `logp5 = ifelse(...)`.
-Caused by warning in `log()`:
-! NaNs produced
-```
-:::
-
-```{.r .cell-code}
-prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %>%
-  arrange(group) %>%
-  kbl(caption = "Median and interquartile range of predictions are shown", format = "markdown") %>%
-  kable_classic(full_width = F, html_font = "Cambria")  %>% 
-  kable_styling(font_size = 9)
-```
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in kable_styling(kable_input, "none", htmltable_class = light_class, :
-Please specify format in kable. kableExtra can customize either HTML or LaTeX
-outputs. See https://haozhu233.github.io/kableExtra/ for details.
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in kable_styling(., font_size = 9): Please specify format in kable.
-kableExtra can customize either HTML or LaTeX outputs. See
-https://haozhu233.github.io/kableExtra/ for details.
-```
-:::
-
 ::: {.cell-output-display}
 Table: Median and interquartile range of predictions are shown
 
@@ -140,16 +102,6 @@ Table: Median and interquartile range of predictions are shown
 |Excess deaths: 2021               |        75|1.6 (1.26-1.92)  |1.62 (1.38-1.9)  |1.54 (1.39-1.69) |2.16 (1.77-2.72) |2.15 (1.53-3.41) |
 |Excess deaths: 2021               |        85|1.48 (1.11-1.96) |1.63 (1.28-1.95) |1.38 (1.23-1.55) |2.1 (1.56-2.9)   |2.08 (1.25-3.71) |
 :::
-
-```{.r .cell-code}
-# prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %>% 
-#   arrange(group) %>% select(-group) %>%
-#   kbl(caption = "Median and interquartile range of predictions are shown", format = "markdown") %>%
-#   kable_classic(full_width = F, html_font = "Cambria") %>% 
-#   pack_rows("All cause deaths (expected): 2020", 1, 5) %>%
-#   pack_rows("Excess deaths: 2020", 6, 10) %>%
-#   pack_rows("Excess deaths: 2021", 11, 15) 
-```
 :::
 
 
