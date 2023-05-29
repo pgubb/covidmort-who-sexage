@@ -36,53 +36,13 @@ Inclusion criteria for this analysis are as follows:
 
 ::: {.cell fig.asp='0.9'}
 ::: {.cell-output-display}
-
-`````{=html}
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> Income quintile </th>
-   <th style="text-align:right;"> No. of countries </th>
-   <th style="text-align:left;"> Range of GNI per capita (PPP) in quintile </th>
-   <th style="text-align:left;"> Countires in quintile </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:left;"> 8,710 - 14,290 </td>
-   <td style="text-align:left;"> Bolivia (Plurinational State of), Ecuador, Egypt, Guatemala, Iraq, Republic of Moldova, Peru, Paraguay, Tunisia, Ukraine, South Africa </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> 14,470 - 21,260 </td>
-   <td style="text-align:left;"> Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Costa Rica, Dominican Republic, Georgia, Iran (Islamic Republic of), Mexico, Serbia </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> 22,100 - 32,740 </td>
-   <td style="text-align:left;"> Argentina, Bulgaria, Chile, Greece, Croatia, Kazakhstan, Panama, Romania, Russian Federation, Slovakia </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> 33,510 - 49,140 </td>
-   <td style="text-align:left;"> Canada, Czechia, Spain, Hungary, Israel, Italy, Japan, Poland, Portugal, Slovenia </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> 49,370 - 71,070 </td>
-   <td style="text-align:left;"> Austria, Belgium, Switzerland, Germany, France, The United Kingdom, Ireland, Netherlands, Sweden, USA </td>
-  </tr>
-</tbody>
-</table>
-
-`````
-
+| Income quintile| No. of countries|Range of GNI per capita (PPP) in quintile |Countires in quintile                                                                                                                     |
+|---------------:|----------------:|:-----------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
+|               1|               11|8,710 - 14,290                            |Bolivia (Plurinational State of), Ecuador, Egypt, Guatemala, Iraq, Republic of Moldova, Peru, Paraguay, Tunisia, Ukraine, South Africa    |
+|               2|               10|14,470 - 21,260                           |Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Costa Rica, Dominican Republic, Georgia, Iran (Islamic Republic of), Mexico, Serbia |
+|               3|               10|22,100 - 32,740                           |Argentina, Bulgaria, Chile, Greece, Croatia, Kazakhstan, Panama, Romania, Russian Federation, Slovakia                                    |
+|               4|               10|33,510 - 49,140                           |Canada, Czechia, Spain, Hungary, Israel, Italy, Japan, Poland, Portugal, Slovenia                                                         |
+|               5|               10|49,370 - 71,070                           |Austria, Belgium, Switzerland, Germany, France, The United Kingdom, Ireland, Netherlands, Sweden, USA                                     |
 :::
 :::
 
