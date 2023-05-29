@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -33,6 +96,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="covidmort-who-sexage-results_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="covidmort-who-sexage-results_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="covidmort-who-sexage-results_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="covidmort-who-sexage-results_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="covidmort-who-sexage-results_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 </head>
@@ -49,11 +115,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
   <ul>
+  <li><a href="#sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" id="toc-sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" class="nav-link" data-scroll-target="#sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles">Sample of countries in analysis data-set by GNI per capita quintiles</a></li>
   <li><a href="#sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations" id="toc-sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations" class="nav-link" data-scroll-target="#sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations">Sex-ratio in mortality (all-cause and excess in 2020): Observations</a></li>
   <li><a href="#age-adjusted-poisson-model-with-interaction" id="toc-age-adjusted-poisson-model-with-interaction" class="nav-link" data-scroll-target="#age-adjusted-poisson-model-with-interaction">Age-adjusted poisson model (with interaction)</a></li>
   <li><a href="#relationship-between-predicted-sex-differences-in-mortality-and-country-income" id="toc-relationship-between-predicted-sex-differences-in-mortality-and-country-income" class="nav-link" data-scroll-target="#relationship-between-predicted-sex-differences-in-mortality-and-country-income">Relationship between predicted sex-differences in mortality and country income</a>
   <ul>
   <li><a href="#all-available-data-composition-of-countries-changes-in-2021" id="toc-all-available-data-composition-of-countries-changes-in-2021" class="nav-link" data-scroll-target="#all-available-data-composition-of-countries-changes-in-2021">All available data (composition of countries changes in 2021)</a></li>
+  <li><a href="#sex-ratio-of-mortality-by-age-year-and-country-income-quintiles" id="toc-sex-ratio-of-mortality-by-age-year-and-country-income-quintiles" class="nav-link" data-scroll-target="#sex-ratio-of-mortality-by-age-year-and-country-income-quintiles">Sex ratio of mortality by age, year and country income quintiles</a></li>
   <li><a href="#keeping-composition-of-countries-constant-only-countries-with-all-cause-deaths-disaggregate-by-gender-in-2020-2021" id="toc-keeping-composition-of-countries-constant-only-countries-with-all-cause-deaths-disaggregate-by-gender-in-2020-2021" class="nav-link" data-scroll-target="#keeping-composition-of-countries-constant-only-countries-with-all-cause-deaths-disaggregate-by-gender-in-2020-2021">Keeping composition of countries constant (only countries with all cause deaths disaggregate by gender in 2020 &amp; 2021)</a></li>
   </ul></li>
   </ul></li>
@@ -91,24 +159,75 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the <a href="https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates">Technical Advisory Group (TAG) on COVID-19 mortality assessment</a>. Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups: 0-25, 25-39, 40-49, 50-59, 60-69, 70-79 and 80+.</p>
-<p>Out of 194 countries in the WHO database, only 35 countries (18 percent, mostly from Europe) have excess death estimates based on reported all-cause death records disaggregated by gender for both 2020 and 2021. 53 countries have reported all-cause death data for both sexes combined for both 2020 and 2021. For nearly all lower -middle- and low-income countries, all-cause deaths are predicted.</p>
+<p>This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the <a href="https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates">Technical Advisory Group (TAG) on COVID-19 mortality assessment</a>. Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:“0-24” , “25-34” , 35-44”, “45-54”, “55-64”, “65-74”, “75-84”, “&gt;85”.</p>
+<p>Out of 195 countries in the WHO database, 75 countries have excess death estimates based on reported all-cause death records disaggregated by gender for 2020 and of these, 61 also use reported deaths by gender and age for 2021.</p>
 <p>Inclusion criteria for this analysis are as follows:</p>
 <ul>
-<li>Age groups at or above 40 years of age</li>
+<li>Age groups at or above 45 years of age</li>
 <li>Countries with a total population of at least 1m</li>
 <li>Countries with a cumulative official COVID-19 death toll of at least 2000 deaths at the end of 2020</li>
 <li>Countries with reported all-cause data disaggregated by age and sex in 2020</li>
-<li>The following 36 countries are included in this analysis: Austria, Belgium, Bulgaria, Brazil, Switzerland, Chile, Colombia, Czechia, Germany, Ecuador, Spain, France, The United Kingdom, Greece, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Mexico, Netherlands, Peru, Poland, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Ukraine, USA, South Africa</li>
+<li>The following 51 countries are included in this analysis: Argentina, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Republic of Moldova, Mexico, Netherlands, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Tunisia, Ukraine, USA, South Africa</li>
 </ul>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" class="level3">
+<h3 class="anchored" data-anchor-id="sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles">Sample of countries in analysis data-set by GNI per capita quintiles</h3>
+<div class="cell" data-fig.asp="0.9">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Income quintile </th>
+   <th style="text-align:right;"> No. of countries </th>
+   <th style="text-align:left;"> Range of GNI per capita (PPP) in quintile </th>
+   <th style="text-align:left;"> Countires in quintile </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> 8,710 - 14,290 </td>
+   <td style="text-align:left;"> Bolivia (Plurinational State of), Ecuador, Egypt, Guatemala, Iraq, Republic of Moldova, Peru, Paraguay, Tunisia, Ukraine, South Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 14,470 - 21,260 </td>
+   <td style="text-align:left;"> Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Costa Rica, Dominican Republic, Georgia, Iran (Islamic Republic of), Mexico, Serbia </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 22,100 - 32,740 </td>
+   <td style="text-align:left;"> Argentina, Bulgaria, Chile, Greece, Croatia, Kazakhstan, Panama, Romania, Russian Federation, Slovakia </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 33,510 - 49,140 </td>
+   <td style="text-align:left;"> Canada, Czechia, Spain, Hungary, Israel, Italy, Japan, Poland, Portugal, Slovenia </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 49,370 - 71,070 </td>
+   <td style="text-align:left;"> Austria, Belgium, Switzerland, Germany, France, The United Kingdom, Ireland, Netherlands, Sweden, USA </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
 <section id="sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations" class="level3">
 <h3 class="anchored" data-anchor-id="sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations">Sex-ratio in mortality (all-cause and excess in 2020): Observations</h3>
 <div class="cell" data-fig.asp="0.9">
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="1152"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>
@@ -116,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="age-adjusted-poisson-model-with-interaction">Age-adjusted poisson model (with interaction)</h3>
 <div class="cell" data-fig.asp="1.4">
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1152"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>
@@ -126,7 +245,168 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="all-available-data-composition-of-countries-changes-in-2021">All available data (composition of countries changes in 2021)</h4>
 <div class="cell" data-fig.asp="0.818">
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+</section>
+<section id="sex-ratio-of-mortality-by-age-year-and-country-income-quintiles" class="level4">
+<h4 class="anchored" data-anchor-id="sex-ratio-of-mortality-by-age-year-and-country-income-quintiles">Sex ratio of mortality by age, year and country income quintiles</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sims_summary <span class="ot">&lt;-</span> <span class="fu">prep_sims_summary_by_inc_quint</span>(sims, income)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `logp5 = ifelse(...)`.
+Caused by warning in `log()`:
+! NaNs produced</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prep_results_table</span>(sims_summary, <span class="at">slct_metric =</span> <span class="st">"Relative risk (Males/Females)"</span>, <span class="at">slct_source =</span> <span class="fu">c</span>(<span class="st">"All cause deaths (expected)"</span>, <span class="st">"Excess deaths"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(group) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>group) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"Median and interquartile range of predictions are shown"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"All cause deaths (expected): 2020"</span>, <span class="dv">1</span>, <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Excess deaths: 2020"</span>, <span class="dv">6</span>, <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Excess deaths: 2021"</span>, <span class="dv">11</span>, <span class="dv">15</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Median and interquartile range of predictions are shown</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Age_Lower </th>
+   <th style="text-align:left;"> Quintile: 1 </th>
+   <th style="text-align:left;"> Quintile: 2 </th>
+   <th style="text-align:left;"> Quintile: 3 </th>
+   <th style="text-align:left;"> Quintile: 4 </th>
+   <th style="text-align:left;"> Quintile: 5 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="5"><td colspan="6" style="border-bottom: 0;"><strong>All cause deaths (expected): 2020</strong></td></tr>
+<tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 45 </td>
+   <td style="text-align:left;"> 1.86 (1.5-2.58) </td>
+   <td style="text-align:left;"> 2.14 (1.75-2.6) </td>
+   <td style="text-align:left;"> 3.2 (2.34-3.71) </td>
+   <td style="text-align:left;"> 2.97 (2.39-3.75) </td>
+   <td style="text-align:left;"> 2.26 (1.79-2.95) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 55 </td>
+   <td style="text-align:left;"> 1.71 (1.42-2.17) </td>
+   <td style="text-align:left;"> 1.85 (1.61-2.12) </td>
+   <td style="text-align:left;"> 2.47 (1.98-2.72) </td>
+   <td style="text-align:left;"> 2.33 (1.98-2.76) </td>
+   <td style="text-align:left;"> 1.88 (1.59-2.28) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 65 </td>
+   <td style="text-align:left;"> 1.57 (1.34-1.85) </td>
+   <td style="text-align:left;"> 1.61 (1.47-1.77) </td>
+   <td style="text-align:left;"> 1.89 (1.7-2.02) </td>
+   <td style="text-align:left;"> 1.83 (1.63-2.05) </td>
+   <td style="text-align:left;"> 1.57 (1.4-1.77) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 75 </td>
+   <td style="text-align:left;"> 1.44 (1.25-1.59) </td>
+   <td style="text-align:left;"> 1.43 (1.28-1.58) </td>
+   <td style="text-align:left;"> 1.47 (1.37-1.55) </td>
+   <td style="text-align:left;"> 1.44 (1.33-1.55) </td>
+   <td style="text-align:left;"> 1.31 (1.21-1.42) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 85 </td>
+   <td style="text-align:left;"> 1.25 (1.13-1.43) </td>
+   <td style="text-align:left;"> 1.26 (1.08-1.44) </td>
+   <td style="text-align:left;"> 1.14 (1.05-1.26) </td>
+   <td style="text-align:left;"> 1.12 (1.03-1.22) </td>
+   <td style="text-align:left;"> 1.09 (0.99-1.2) </td>
+  </tr>
+  <tr grouplength="5"><td colspan="6" style="border-bottom: 0;"><strong>Excess deaths: 2020</strong></td></tr>
+<tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 45 </td>
+   <td style="text-align:left;"> 2.1 (1.33-3.02) </td>
+   <td style="text-align:left;"> 3.05 (1.79-5.6) </td>
+   <td style="text-align:left;"> 2.37 (1.9-3.58) </td>
+   <td style="text-align:left;"> 3.91 (2.35-7.06) </td>
+   <td style="text-align:left;"> 3.61 (1.82-6.34) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 55 </td>
+   <td style="text-align:left;"> 2.11 (1.39-2.95) </td>
+   <td style="text-align:left;"> 2.66 (1.9-4.14) </td>
+   <td style="text-align:left;"> 2.31 (1.95-3.03) </td>
+   <td style="text-align:left;"> 3.22 (2.17-4.95) </td>
+   <td style="text-align:left;"> 2.9 (1.82-4.43) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 65 </td>
+   <td style="text-align:left;"> 2.06 (1.44-2.97) </td>
+   <td style="text-align:left;"> 2.32 (1.89-3.21) </td>
+   <td style="text-align:left;"> 2.23 (1.93-2.75) </td>
+   <td style="text-align:left;"> 2.66 (1.96-3.54) </td>
+   <td style="text-align:left;"> 2.35 (1.78-3.2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 75 </td>
+   <td style="text-align:left;"> 2.01 (1.43-2.9) </td>
+   <td style="text-align:left;"> 2.11 (1.62-2.91) </td>
+   <td style="text-align:left;"> 2.05 (1.82-2.52) </td>
+   <td style="text-align:left;"> 2.1 (1.68-2.65) </td>
+   <td style="text-align:left;"> 2.08 (1.65-2.57) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 85 </td>
+   <td style="text-align:left;"> 1.98 (1.34-2.93) </td>
+   <td style="text-align:left;"> 1.94 (1.3-3.05) </td>
+   <td style="text-align:left;"> 1.86 (1.58-2.39) </td>
+   <td style="text-align:left;"> 1.62 (1.35-2.13) </td>
+   <td style="text-align:left;"> 1.74 (1.31-2.26) </td>
+  </tr>
+  <tr grouplength="5"><td colspan="6" style="border-bottom: 0;"><strong>Excess deaths: 2021</strong></td></tr>
+<tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 45 </td>
+   <td style="text-align:left;"> 1.76 (1.36-2.26) </td>
+   <td style="text-align:left;"> 1.62 (1.11-2.64) </td>
+   <td style="text-align:left;"> 2.1 (1.6-2.74) </td>
+   <td style="text-align:left;"> 2.17 (1.4-2.98) </td>
+   <td style="text-align:left;"> 2.52 (1.49-4.21) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 55 </td>
+   <td style="text-align:left;"> 1.77 (1.39-2.11) </td>
+   <td style="text-align:left;"> 1.63 (1.22-2.25) </td>
+   <td style="text-align:left;"> 1.9 (1.55-2.29) </td>
+   <td style="text-align:left;"> 2.21 (1.68-2.86) </td>
+   <td style="text-align:left;"> 2.32 (1.67-3.53) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 65 </td>
+   <td style="text-align:left;"> 1.72 (1.36-1.99) </td>
+   <td style="text-align:left;"> 1.61 (1.34-2.01) </td>
+   <td style="text-align:left;"> 1.71 (1.49-1.94) </td>
+   <td style="text-align:left;"> 2.22 (1.83-2.84) </td>
+   <td style="text-align:left;"> 2.21 (1.68-3.25) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 75 </td>
+   <td style="text-align:left;"> 1.6 (1.26-1.92) </td>
+   <td style="text-align:left;"> 1.62 (1.38-1.9) </td>
+   <td style="text-align:left;"> 1.54 (1.39-1.69) </td>
+   <td style="text-align:left;"> 2.16 (1.77-2.72) </td>
+   <td style="text-align:left;"> 2.15 (1.53-3.41) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 85 </td>
+   <td style="text-align:left;"> 1.48 (1.11-1.96) </td>
+   <td style="text-align:left;"> 1.63 (1.28-1.95) </td>
+   <td style="text-align:left;"> 1.38 (1.23-1.55) </td>
+   <td style="text-align:left;"> 2.1 (1.56-2.9) </td>
+   <td style="text-align:left;"> 2.08 (1.25-3.71) </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </section>
@@ -134,7 +414,7 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="keeping-composition-of-countries-constant-only-countries-with-all-cause-deaths-disaggregate-by-gender-in-2020-2021">Keeping composition of countries constant (only countries with all cause deaths disaggregate by gender in 2020 &amp; 2021)</h4>
 <div class="cell" data-fig.asp="0.818">
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 </section>
@@ -146,472 +426,667 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="by-country">By country</h3>
 <p>The following set of figures display observed and predicted values of mortality rates, the sex-ratio of mortality rates (males/females) and the sex-gap of mortality rates (males - females) by age, for each country in the analysis dataset.</p>
 <div class="cell" data-fig.asp="0.818">
+<section id="argentina" class="level4">
+<h4 class="anchored" data-anchor-id="argentina">Argentina</h4>
+<ul>
+<li>Total population: 44,985,105</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 48,271</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 69,905</li>
+<li>Total excess deaths in 2020 (WHO): 35,840.96</li>
+<li>Total excess deaths in 2021 (WHO):</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="960"></p>
+</div>
+</section>
 <section id="austria" class="level4">
 <h4 class="anchored" data-anchor-id="austria">Austria</h4>
 <ul>
-<li>Total population: 9,006,400</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 7,380</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 9,303</li>
-<li>Total excess deaths in 2020 (WHO): 6,536</li>
-<li>Total excess deaths in 2021 (WHO): 5,405</li>
+<li>Total population: 8,888,592</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 7,379</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 9,319</li>
+<li>Total excess deaths in 2020 (WHO): 8,087.427</li>
+<li>Total excess deaths in 2021 (WHO): 7,886.081</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="azerbaijan" class="level4">
+<h4 class="anchored" data-anchor-id="azerbaijan">Azerbaijan</h4>
+<ul>
+<li>Total population: 10,282,158</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,575</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 5,771</li>
+<li>Total excess deaths in 2020 (WHO): 12,039.15</li>
+<li>Total excess deaths in 2021 (WHO): 21,581.59</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="belgium" class="level4">
 <h4 class="anchored" data-anchor-id="belgium">Belgium</h4>
 <ul>
-<li>Total population: 11,589,616</li>
+<li>Total population: 11,533,459</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 19,674</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 8,682</li>
-<li>Total excess deaths in 2020 (WHO): 16,968</li>
-<li>Total excess deaths in 2021 (WHO): 951</li>
+<li>Total excess deaths in 2020 (WHO): 16,540.23</li>
+<li>Total excess deaths in 2021 (WHO): 3,794.365</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="bulgaria" class="level4">
 <h4 class="anchored" data-anchor-id="bulgaria">Bulgaria</h4>
 <ul>
-<li>Total population: 6,948,445</li>
+<li>Total population: 6,967,018</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 7,515</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 23,375</li>
-<li>Total excess deaths in 2020 (WHO): 16,880</li>
-<li>Total excess deaths in 2021 (WHO): 40,615</li>
+<li>Total excess deaths in 2020 (WHO): 17,804.05</li>
+<li>Total excess deaths in 2021 (WHO): 42,715.42</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-5.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="bosnia-and-herzegovina" class="level4">
+<h4 class="anchored" data-anchor-id="bosnia-and-herzegovina">Bosnia and Herzegovina</h4>
+<ul>
+<li>Total population: 3,314,350</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 4,050</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 9,378</li>
+<li>Total excess deaths in 2020 (WHO): 6,792.844</li>
+<li>Total excess deaths in 2021 (WHO):</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-6.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="bolivia-plurinational-state-of" class="level4">
+<h4 class="anchored" data-anchor-id="bolivia-plurinational-state-of">Bolivia (Plurinational State of)</h4>
+<ul>
+<li>Total population: 11,934,333</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 9,135</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 10,515</li>
+<li>Total excess deaths in 2020 (WHO): 33,888.56</li>
+<li>Total excess deaths in 2021 (WHO): 47,020.77</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-7.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="brazil" class="level4">
 <h4 class="anchored" data-anchor-id="brazil">Brazil</h4>
 <ul>
-<li>Total population: 212,559,409</li>
+<li>Total population: 213,114,918</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 192,681</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 426,136</li>
-<li>Total excess deaths in 2020 (WHO): 210,810</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 189,945.8</li>
+<li>Total excess deaths in 2021 (WHO): 467,480.1</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-4.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-8.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="canada" class="level4">
+<h4 class="anchored" data-anchor-id="canada">Canada</h4>
+<ul>
+<li>Total population: 37,818,806</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 15,274</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 14,684</li>
+<li>Total excess deaths in 2020 (WHO): 14,551.54</li>
+<li>Total excess deaths in 2021 (WHO): 11,949.19</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-9.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="switzerland" class="level4">
 <h4 class="anchored" data-anchor-id="switzerland">Switzerland</h4>
 <ul>
-<li>Total population: 8,654,618</li>
+<li>Total population: 8,619,390</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 7,528</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 4,393</li>
-<li>Total excess deaths in 2020 (WHO): 7,540</li>
-<li>Total excess deaths in 2021 (WHO): 707</li>
+<li>Total excess deaths in 2020 (WHO): 8,808.004</li>
+<li>Total excess deaths in 2021 (WHO): 3,683.951</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-5.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-10.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="chile" class="level4">
 <h4 class="anchored" data-anchor-id="chile">Chile</h4>
 <ul>
-<li>Total population: 19,116,209</li>
+<li>Total population: 19,276,612</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 16,499</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 22,597</li>
-<li>Total excess deaths in 2020 (WHO): 14,577</li>
-<li>Total excess deaths in 2021 (WHO): 24,121</li>
+<li>Total excess deaths in 2020 (WHO): 14,771.02</li>
+<li>Total excess deaths in 2021 (WHO): 23,894.96</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-6.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-11.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="colombia" class="level4">
 <h4 class="anchored" data-anchor-id="colombia">Colombia</h4>
 <ul>
-<li>Total population: 50,882,884</li>
+<li>Total population: 50,911,158</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 42,620</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 87,246</li>
-<li>Total excess deaths in 2020 (WHO): 54,062</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 53,886.16</li>
+<li>Total excess deaths in 2021 (WHO): 108,332.4</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-7.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-12.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="costa-rica" class="level4">
+<h4 class="anchored" data-anchor-id="costa-rica">Costa Rica</h4>
+<ul>
+<li>Total population: 5,119,855</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,156</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 5,198</li>
+<li>Total excess deaths in 2020 (WHO): 738.0506</li>
+<li>Total excess deaths in 2021 (WHO): 4,704.336</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-13.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="czechia" class="level4">
 <h4 class="anchored" data-anchor-id="czechia">Czechia</h4>
 <ul>
-<li>Total population: 10,708,982</li>
+<li>Total population: 10,514,740</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 11,888</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 24,443</li>
-<li>Total excess deaths in 2020 (WHO): 13,450</li>
-<li>Total excess deaths in 2021 (WHO): 23,590</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 24,444</li>
+<li>Total excess deaths in 2020 (WHO): 16,599.66</li>
+<li>Total excess deaths in 2021 (WHO): 26,648.28</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-8.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-14.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="germany" class="level4">
 <h4 class="anchored" data-anchor-id="germany">Germany</h4>
 <ul>
-<li>Total population: 83,783,945</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 50,442</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 67,991</li>
-<li>Total excess deaths in 2020 (WHO): 66,793</li>
-<li>Total excess deaths in 2021 (WHO): 128,194</li>
+<li>Total population: 83,116,786</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 50,447</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 68,023</li>
+<li>Total excess deaths in 2020 (WHO): 34,514.19</li>
+<li>Total excess deaths in 2021 (WHO): 66,990.79</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-9.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-15.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="dominican-republic" class="level4">
+<h4 class="anchored" data-anchor-id="dominican-republic">Dominican Republic</h4>
+<ul>
+<li>Total population: 10,994,170</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,409</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 1,837</li>
+<li>Total excess deaths in 2020 (WHO): 2,333.078</li>
+<li>Total excess deaths in 2021 (WHO): 6,689.009</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-16.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="ecuador" class="level4">
 <h4 class="anchored" data-anchor-id="ecuador">Ecuador</h4>
 <ul>
-<li>Total population: 17,643,060</li>
+<li>Total population: 17,580,085</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 14,023</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 19,646</li>
-<li>Total excess deaths in 2020 (WHO): 46,402</li>
+<li>Total excess deaths in 2020 (WHO): 46,706.66</li>
+<li>Total excess deaths in 2021 (WHO): 32,874.78</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-17.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="egypt" class="level4">
+<h4 class="anchored" data-anchor-id="egypt">Egypt</h4>
+<ul>
+<li>Total population: 107,450,137</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 7,520</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 14,175</li>
+<li>Total excess deaths in 2020 (WHO): 107,524</li>
 <li>Total excess deaths in 2021 (WHO):</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-10.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-18.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="spain" class="level4">
 <h4 class="anchored" data-anchor-id="spain">Spain</h4>
 <ul>
-<li>Total population: 46,754,783</li>
+<li>Total population: 47,233,572</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 54,459</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 37,229</li>
-<li>Total excess deaths in 2020 (WHO): 72,574</li>
-<li>Total excess deaths in 2021 (WHO): 31,361</li>
+<li>Total excess deaths in 2020 (WHO): 75,201.66</li>
+<li>Total excess deaths in 2021 (WHO): 32,336.08</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-11.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-19.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="france" class="level4">
 <h4 class="anchored" data-anchor-id="france">France</h4>
 <ul>
-<li>Total population: 65,273,512</li>
+<li>Total population: 64,291,311</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 64,004</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 56,958</li>
-<li>Total excess deaths in 2020 (WHO): 49,178</li>
-<li>Total excess deaths in 2021 (WHO): 32,671</li>
+<li>Total excess deaths in 2020 (WHO): 50,200.12</li>
+<li>Total excess deaths in 2021 (WHO): 37,445.36</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-12.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-20.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="the-united-kingdom" class="level4">
 <h4 class="anchored" data-anchor-id="the-united-kingdom">The United Kingdom</h4>
 <ul>
-<li>Total population: 67,886,004</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 75,239</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 74,688</li>
-<li>Total excess deaths in 2020 (WHO): 85,504</li>
-<li>Total excess deaths in 2021 (WHO): 63,392</li>
+<li>Total population: 66,921,778</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 93,317</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 83,496</li>
+<li>Total excess deaths in 2020 (WHO): 81,734.67</li>
+<li>Total excess deaths in 2021 (WHO): 65,350.31</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-13.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-21.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="georgia" class="level4">
+<h4 class="anchored" data-anchor-id="georgia">Georgia</h4>
+<ul>
+<li>Total population: 3,762,236</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,505</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 11,295</li>
+<li>Total excess deaths in 2020 (WHO): 5,738.193</li>
+<li>Total excess deaths in 2021 (WHO): 17,255.76</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-22.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="greece" class="level4">
 <h4 class="anchored" data-anchor-id="greece">Greece</h4>
 <ul>
-<li>Total population: 10,423,056</li>
+<li>Total population: 10,484,757</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 4,788</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 15,920</li>
-<li>Total excess deaths in 2020 (WHO): 4,043</li>
-<li>Total excess deaths in 2021 (WHO): 15,351</li>
+<li>Total excess deaths in 2020 (WHO): 7,277.952</li>
+<li>Total excess deaths in 2021 (WHO): 19,485.75</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-14.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-23.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="guatemala" class="level4">
+<h4 class="anchored" data-anchor-id="guatemala">Guatemala</h4>
+<ul>
+<li>Total population: 17,355,773</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 4,803</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 11,299</li>
+<li>Total excess deaths in 2020 (WHO): 12,580.13</li>
+<li>Total excess deaths in 2021 (WHO): 36,476.57</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-24.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="croatia" class="level4">
 <h4 class="anchored" data-anchor-id="croatia">Croatia</h4>
 <ul>
-<li>Total population: 4,105,268</li>
+<li>Total population: 4,089,053</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 3,860</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 8,633</li>
-<li>Total excess deaths in 2020 (WHO): 5,502</li>
-<li>Total excess deaths in 2021 (WHO): 11,676</li>
+<li>Total excess deaths in 2020 (WHO): 5,870.759</li>
+<li>Total excess deaths in 2021 (WHO): 12,268.29</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-15.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-25.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="hungary" class="level4">
 <h4 class="anchored" data-anchor-id="hungary">Hungary</h4>
 <ul>
-<li>Total population: 9,660,350</li>
+<li>Total population: 9,733,129</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 9,537</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 29,649</li>
-<li>Total excess deaths in 2020 (WHO): 11,072</li>
-<li>Total excess deaths in 2021 (WHO): 25,427</li>
+<li>Total excess deaths in 2020 (WHO): 12,046.75</li>
+<li>Total excess deaths in 2021 (WHO): 26,972.14</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-16.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-26.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="ireland" class="level4">
 <h4 class="anchored" data-anchor-id="ireland">Ireland</h4>
 <ul>
-<li>Total population: 4,937,796</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 2,264</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 3,824</li>
-<li>Total excess deaths in 2020 (WHO): 420</li>
+<li>Total population: 4,939,931</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,265</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 3,826</li>
+<li>Total excess deaths in 2020 (WHO): 1,601.448</li>
 <li>Total excess deaths in 2021 (WHO):</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-17.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-27.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="iran-islamic-republic-of" class="level4">
 <h4 class="anchored" data-anchor-id="iran-islamic-republic-of">Iran (Islamic Republic of)</h4>
 <ul>
-<li>Total population: 83,992,953</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 55,095</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 76,477</li>
-<li>Total excess deaths in 2020 (WHO): 108,918</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total population: 87,266,417</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 54,946</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 76,581</li>
+<li>Total excess deaths in 2020 (WHO): 136,293.9</li>
+<li>Total excess deaths in 2021 (WHO): 159,238.4</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-18.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-28.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="iraq" class="level4">
 <h4 class="anchored" data-anchor-id="iraq">Iraq</h4>
 <ul>
-<li>Total population: 40,222,503</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 12,808</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 11,346</li>
-<li>Total excess deaths in 2020 (WHO): 40,399</li>
+<li>Total population: 42,553,401</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 12,800</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 11,351</li>
+<li>Total excess deaths in 2020 (WHO): 28,125.58</li>
 <li>Total excess deaths in 2021 (WHO):</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-19.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-29.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="israel" class="level4">
 <h4 class="anchored" data-anchor-id="israel">Israel</h4>
 <ul>
-<li>Total population: 8,655,541</li>
+<li>Total population: 8,746,610</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 3,336</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 4,923</li>
-<li>Total excess deaths in 2020 (WHO): 2,434</li>
-<li>Total excess deaths in 2021 (WHO): 3,744</li>
+<li>Total excess deaths in 2020 (WHO): 3,177.944</li>
+<li>Total excess deaths in 2021 (WHO): 4,795.487</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-20.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-30.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="italy" class="level4">
 <h4 class="anchored" data-anchor-id="italy">Italy</h4>
 <ul>
-<li>Total population: 60,461,828</li>
+<li>Total population: 59,314,503</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 73,604</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 63,643</li>
-<li>Total excess deaths in 2020 (WHO): 100,432</li>
-<li>Total excess deaths in 2021 (WHO): 60,368</li>
+<li>Total excess deaths in 2020 (WHO): 109,157.4</li>
+<li>Total excess deaths in 2021 (WHO): 75,106.86</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-21.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-31.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="japan" class="level4">
 <h4 class="anchored" data-anchor-id="japan">Japan</h4>
 <ul>
-<li>Total population: 126,476,458</li>
+<li>Total population: 124,706,807</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 3,414</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 14,979</li>
-<li>Total excess deaths in 2020 (WHO): -30,138</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): -21,921.16</li>
+<li>Total excess deaths in 2021 (WHO): 22,117.4</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-22.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-32.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="kazakhstan" class="level4">
 <h4 class="anchored" data-anchor-id="kazakhstan">Kazakhstan</h4>
 <ul>
-<li>Total population: 18,776,707</li>
+<li>Total population: 18,973,597</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 2,749</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 15,478</li>
-<li>Total excess deaths in 2020 (WHO): 28,493</li>
-<li>Total excess deaths in 2021 (WHO): 47,721</li>
+<li>Total excess deaths in 2020 (WHO): 31,218.43</li>
+<li>Total excess deaths in 2021 (WHO): 52,050.25</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-23.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-33.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="republic-of-moldova" class="level4">
+<h4 class="anchored" data-anchor-id="republic-of-moldova">Republic of Moldova</h4>
+<ul>
+<li>Total population: 3,082,703</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 3,110</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 7,159</li>
+<li>Total excess deaths in 2020 (WHO): 5,436.351</li>
+<li>Total excess deaths in 2021 (WHO): 10,905.46</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-34.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="mexico" class="level4">
 <h4 class="anchored" data-anchor-id="mexico">Mexico</h4>
 <ul>
-<li>Total population: 128,932,753</li>
+<li>Total population: 125,917,904</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 147,623</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 156,199</li>
-<li>Total excess deaths in 2020 (WHO): 314,541</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 297,154</li>
+<li>Total excess deaths in 2021 (WHO): 315,216</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-24.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-35.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="netherlands" class="level4">
 <h4 class="anchored" data-anchor-id="netherlands">Netherlands</h4>
 <ul>
-<li>Total population: 17,134,873</li>
+<li>Total population: 17,403,110</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 11,296</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 9,589</li>
-<li>Total excess deaths in 2020 (WHO): 14,482</li>
-<li>Total excess deaths in 2021 (WHO): 14,731</li>
+<li>Total excess deaths in 2020 (WHO): 14,530.01</li>
+<li>Total excess deaths in 2021 (WHO): 16,001.69</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-25.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-36.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="panama" class="level4">
+<h4 class="anchored" data-anchor-id="panama">Panama</h4>
+<ul>
+<li>Total population: 4,291,548</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 3,933</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 3,492</li>
+<li>Total excess deaths in 2020 (WHO): 2,861.276</li>
+<li>Total excess deaths in 2021 (WHO):</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-37.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="peru" class="level4">
 <h4 class="anchored" data-anchor-id="peru">Peru</h4>
 <ul>
-<li>Total population: 32,971,846</li>
+<li>Total population: 33,290,096</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 93,066</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 109,518</li>
-<li>Total excess deaths in 2020 (WHO): 133,817</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 100,106.6</li>
+<li>Total excess deaths in 2021 (WHO): 124,084.2</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-26.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-38.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="poland" class="level4">
 <h4 class="anchored" data-anchor-id="poland">Poland</h4>
 <ul>
-<li>Total population: 37,846,605</li>
+<li>Total population: 38,358,520</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 28,642</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 68,416</li>
-<li>Total excess deaths in 2020 (WHO): 60,687</li>
-<li>Total excess deaths in 2021 (WHO): 96,844</li>
+<li>Total excess deaths in 2020 (WHO): 63,032.16</li>
+<li>Total excess deaths in 2021 (WHO): 100,112.2</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-27.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-39.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="portugal" class="level4">
+<h4 class="anchored" data-anchor-id="portugal">Portugal</h4>
+<ul>
+<li>Total population: 10,274,559</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 6,842</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 12,095</li>
+<li>Total excess deaths in 2020 (WHO): 11,245.03</li>
+<li>Total excess deaths in 2021 (WHO): 12,245.21</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-40.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="paraguay" class="level4">
+<h4 class="anchored" data-anchor-id="paraguay">Paraguay</h4>
+<ul>
+<li>Total population: 6,615,894</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,220</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 14,404</li>
+<li>Total excess deaths in 2020 (WHO): 1,423.428</li>
+<li>Total excess deaths in 2021 (WHO): 18,371.62</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-41.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="romania" class="level4">
 <h4 class="anchored" data-anchor-id="romania">Romania</h4>
 <ul>
-<li>Total population: 19,237,682</li>
+<li>Total population: 19,411,764</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 15,596</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 43,118</li>
-<li>Total excess deaths in 2020 (WHO): 34,995</li>
-<li>Total excess deaths in 2021 (WHO): 71,917</li>
+<li>Total excess deaths in 2020 (WHO): 37,164.14</li>
+<li>Total excess deaths in 2021 (WHO): 76,235.53</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-28.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-42.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="russian-federation" class="level4">
 <h4 class="anchored" data-anchor-id="russian-federation">Russian Federation</h4>
 <ul>
-<li>Total population: 145,934,460</li>
+<li>Total population: 145,420,443</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 57,019</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 251,841</li>
-<li>Total excess deaths in 2020 (WHO): 369,306</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 380,136.8</li>
+<li>Total excess deaths in 2021 (WHO): 713,027.8</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-29.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-43.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="serbia" class="level4">
 <h4 class="anchored" data-anchor-id="serbia">Serbia</h4>
 <ul>
-<li>Total population: 8,737,370</li>
+<li>Total population: 7,347,278</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 3,163</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 9,525</li>
-<li>Total excess deaths in 2020 (WHO): 17,173</li>
-<li>Total excess deaths in 2021 (WHO): 38,470</li>
+<li>Total excess deaths in 2020 (WHO): 16,724.08</li>
+<li>Total excess deaths in 2021 (WHO): 36,442.32</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-30.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-44.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="slovakia" class="level4">
 <h4 class="anchored" data-anchor-id="slovakia">Slovakia</h4>
 <ul>
-<li>Total population: 5,459,643</li>
+<li>Total population: 5,449,592</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 2,138</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 14,497</li>
-<li>Total excess deaths in 2020 (WHO): 5,463</li>
-<li>Total excess deaths in 2021 (WHO): 18,857</li>
+<li>Total excess deaths in 2020 (WHO): 5,849.537</li>
+<li>Total excess deaths in 2021 (WHO): 20,291.01</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-31.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-45.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="slovenia" class="level4">
 <h4 class="anchored" data-anchor-id="slovenia">Slovenia</h4>
 <ul>
-<li>Total population: 2,078,932</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 2,984</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 3,145</li>
-<li>Total excess deaths in 2020 (WHO): 3,346</li>
-<li>Total excess deaths in 2021 (WHO): 2,238</li>
+<li>Total population: 2,113,213</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 2,981</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 3,139</li>
+<li>Total excess deaths in 2020 (WHO): 1,317.898</li>
+<li>Total excess deaths in 2021 (WHO): 241.1147</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-32.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-46.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="sweden" class="level4">
 <h4 class="anchored" data-anchor-id="sweden">Sweden</h4>
 <ul>
-<li>Total population: 10,099,270</li>
-<li>Total official COVID deaths in 2020 (Our World in Data): 9,616</li>
-<li>Total official COVID deaths in 2021 (Our World in Data): 5,719</li>
-<li>Total excess deaths in 2020 (WHO): 8,502</li>
-<li>Total excess deaths in 2021 (WHO): 2,751</li>
+<li>Total population: 10,347,118</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 9,706</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 5,639</li>
+<li>Total excess deaths in 2020 (WHO): 8,932.776</li>
+<li>Total excess deaths in 2021 (WHO): 3,273.921</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-33.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-47.png" class="img-fluid" width="960"></p>
+</div>
+</section>
+<section id="tunisia" class="level4">
+<h4 class="anchored" data-anchor-id="tunisia">Tunisia</h4>
+<ul>
+<li>Total population: 12,156,148</li>
+<li>Total official COVID deaths in 2020 (Our World in Data): 4,620</li>
+<li>Total official COVID deaths in 2021 (Our World in Data): 20,944</li>
+<li>Total excess deaths in 2020 (WHO): 4,322.457</li>
+<li>Total excess deaths in 2021 (WHO):</li>
+</ul>
+<div class="cell-output-display">
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-48.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="ukraine" class="level4">
 <h4 class="anchored" data-anchor-id="ukraine">Ukraine</h4>
 <ul>
-<li>Total population: 43,733,759</li>
+<li>Total population: 43,843,015</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 18,533</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 77,366</li>
-<li>Total excess deaths in 2020 (WHO): 45,366</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 43,125.64</li>
+<li>Total excess deaths in 2021 (WHO): 144,710.5</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-34.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-49.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="usa" class="level4">
 <h4 class="anchored" data-anchor-id="usa">USA</h4>
 <ul>
-<li>Total population: 331,002,647</li>
+<li>Total population: 335,410,796</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 352,004</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 467,051</li>
-<li>Total excess deaths in 2020 (WHO): 465,705</li>
-<li>Total excess deaths in 2021 (WHO): 466,755</li>
+<li>Total excess deaths in 2020 (WHO): 467,312.8</li>
+<li>Total excess deaths in 2021 (WHO): 501,112.5</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-35.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-50.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 <section id="south-africa" class="level4">
 <h4 class="anchored" data-anchor-id="south-africa">South Africa</h4>
 <ul>
-<li>Total population: 59,308,690</li>
+<li>Total population: 58,778,516</li>
 <li>Total official COVID deaths in 2020 (Our World in Data): 28,033</li>
 <li>Total official COVID deaths in 2021 (Our World in Data): 63,028</li>
-<li>Total excess deaths in 2020 (WHO): 54,401</li>
-<li>Total excess deaths in 2021 (WHO):</li>
+<li>Total excess deaths in 2020 (WHO): 56,967.63</li>
+<li>Total excess deaths in 2021 (WHO): 189,834.3</li>
 </ul>
 <div class="cell-output-display">
-<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-36.png" class="img-fluid" width="960"></p>
+<p><img src="covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-51.png" class="img-fluid" width="960"></p>
 </div>
 </section>
 </div>

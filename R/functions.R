@@ -13,6 +13,7 @@ library(readxl)
 library(broom)
 library(glue)
 library(scales)
+library(kableExtra)
 
 '%not_in%' <- function(x,y)!('%in%'(x,y))
 
@@ -463,6 +464,119 @@ prep_sims_summary <- function(sims) {
 
   }
 
+
+prep_sims_summary_by_inc_quint <- function(sims, income) {
+
+  sims <- sims %>%
+    left_join(income, by = "iso3c") %>%
+    mutate(
+      gnipcap_quintiles = cut(gni_pcap_ppp, breaks = quantile(gni_pcap_ppp, probs = seq(0, 1, 1/5)), label = FALSE, ordered_result = TRUE, include.lowest = TRUE)
+    )
+
+  sims_long <- sims %>%
+    #filter(year != 2021) %>%
+    pivot_longer(cols = starts_with("males_"), values_to = "mr", names_prefix = "males_" , names_to = "sex") %>%
+    mutate(
+      Sex_name = ifelse(sex == 1, "Males", "Females"),
+      Sex = ifelse(sex == 1, "m", "f")
+    ) %>% select(-sex)
+
+  sumstats <- function(data, var, metric, type, ...) {
+
+    var <- enquo(var)
+
+    data %>%
+      group_by(...) %>%
+      mutate(
+        !!var := ifelse(is.infinite(!!var) | is.nan(!!var), NA, !!var),
+        p5 = quantile(!!var, prob = 0.05, na.rm = TRUE),
+        p25 = quantile(!!var, prob = 0.25, na.rm = TRUE),
+        p50 = quantile(!!var, prob = 0.5, na.rm = TRUE),
+        p75 = quantile(!!var, prob = 0.75, na.rm = TRUE),
+        p95 = quantile(!!var, prob = 0.95, na.rm = TRUE),
+        mean = mean(!!var),
+        metric = metric,
+        type = type
+      ) %>%
+      filter(row_number() == 1) %>%
+      ungroup() -> summary
+
+    if (quo_name(var) %in% c("RRmf", "ARmf")) {
+      summary %>% mutate(
+        Sex_name = "Not applicable"
+      ) -> summary
+
+      return(summary %>% select(...,  Sex_name, metric, type, p5, p25, p50, p75, p95, mean))
+
+    } else {
+      return(summary %>% select(...,  metric, type, p5, p25, p50, p75, p95, mean))
+    }
+
+  }
+
+  # Summary stats of mortality rates across simulations by country, sex and age
+  sims_sum_mr <- sumstats(sims_long, mr, metric = "Mortality rate (per 100,000) [log-scale]", type = "Prediction", gnipcap_quintiles, source, Year, Sex_name, Age_Lower, Age_Lower_rec)
+
+  # Summary stats of relative risk (M/F) across simulations, by country and age
+  sims_sum_rr <- sumstats(sims, RRmf, metric = "Relative risk (Males/Females)", type = "Prediction", gnipcap_quintiles, source, Year, Age_Lower, Age_Lower_rec)
+
+  # Summary stats of absolute risk (M-F) across simulations, by country and age
+  sims_sum_ar <- sumstats(sims, ARmf, metric = "Absolute risk difference (Males - Females)", type = "Prediction", gnipcap_quintiles, source, Year, Age_Lower, Age_Lower_rec)
+
+  # Compiling into single dataset
+  rbind(sims_sum_mr, sims_sum_rr, sims_sum_ar) %>%
+    mutate(source_year = paste(source, Year, sep = ": "),
+           source_year_sex = paste(source_year, Sex_name, sep = ": "),
+           metric = factor(metric, levels = c("Mortality rate (per 100,000) [log-scale]", "Relative risk (Males/Females)", "Absolute risk difference (Males - Females)"), ordered = TRUE),
+           metric_lab = factor(str_wrap(metric, 20), levels = str_wrap(c("Mortality rate (per 100,000) [log-scale]", "Relative risk (Males/Females)", "Absolute risk difference (Males - Females)"), 20), ordered = TRUE),
+           logp50 = ifelse(metric %in% c("Relative risk (Males/Females)", "Absolute risk difference (Males - Females)"), p50, log(p50)),
+           logp5 = ifelse(metric  %in% c("Relative risk (Males/Females)", "Absolute risk difference (Males - Females)"), p5,  log(p5)),
+           logp95 = ifelse(metric %in% c("Relative risk (Males/Females)", "Absolute risk difference (Males - Females)"), p95, log(p95))
+    )
+
+}
+
+
+prep_results_table <- function(sims_summary, slct_metric, slct_source) {
+
+  sims_summary %>%
+    filter(metric == slct_metric & source %in% slct_source) %>%
+    select(source, Year, Age_Lower, gnipcap_quintiles, p25, p50, p75) %>%
+    arrange(gnipcap_quintiles, Age_Lower) %>%
+    mutate(
+      gnipcap_quintiles = paste0("Quintile: ", gnipcap_quintiles),
+      group = paste(source, Year, sep = ": "),
+      summary_stat = paste0(round(p50,2), " (", round(p25, 2), "-", round(p75, 2), ")")
+    ) %>%
+    pivot_wider(
+      id_cols = c(group, Age_Lower),
+      names_from = gnipcap_quintiles,
+      values_from = summary_stat
+    )
+}
+
+sample_summary_table <- function(analysis_data) {
+
+  analysis_data %>%
+    group_by(iso3c) %>%
+    filter(row_number() == 1) %>%
+    select(Country, gni_pcap_ppp) %>%
+    ungroup() %>%
+    mutate(gnipcap_quintiles = cut(gni_pcap_ppp, breaks = quantile(gni_pcap_ppp, probs = seq(0, 1, 1/5)), label = FALSE, ordered_result = TRUE, include.lowest = TRUE),
+           N = 1) %>%
+    group_by(gnipcap_quintiles) %>%
+    summarize(
+      N = sum(N),
+      min = prettyNum(min(gni_pcap_ppp), big.mark=","),
+      max = prettyNum(max(gni_pcap_ppp), big.mark = ","),
+      min_max = paste(min, max, sep = " - "),
+      countries = reduce(Country, paste, sep= ", ")
+    ) %>%
+    select(gnipcap_quintiles, N, min_max, countries) %>%
+    rename(`Income quintile` = gnipcap_quintiles, `No. of countries` = N, `Range of GNI per capita (PPP) in quintile` = min_max, `Countires in quintile` = countries)
+
+}
+
 ######################################################
 # Function that prepares actual observations
 ######################################################
@@ -606,5 +720,6 @@ stack_models <- function(analysis_data) {
   bind_rows(model1, model2, model3)
 
 }
+
 
 

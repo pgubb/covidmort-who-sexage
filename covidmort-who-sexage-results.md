@@ -32,11 +32,66 @@ Inclusion criteria for this analysis are as follows:
 
 ## Results
 
+### Sample of countries in analysis data-set by GNI per capita quintiles
+
+::: {.cell fig.asp='0.9'}
+::: {.cell-output-display}
+
+`````{=html}
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Income quintile </th>
+   <th style="text-align:right;"> No. of countries </th>
+   <th style="text-align:left;"> Range of GNI per capita (PPP) in quintile </th>
+   <th style="text-align:left;"> Countires in quintile </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:left;"> 8,710 - 14,290 </td>
+   <td style="text-align:left;"> Bolivia (Plurinational State of), Ecuador, Egypt, Guatemala, Iraq, Republic of Moldova, Peru, Paraguay, Tunisia, Ukraine, South Africa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 14,470 - 21,260 </td>
+   <td style="text-align:left;"> Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Costa Rica, Dominican Republic, Georgia, Iran (Islamic Republic of), Mexico, Serbia </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 22,100 - 32,740 </td>
+   <td style="text-align:left;"> Argentina, Bulgaria, Chile, Greece, Croatia, Kazakhstan, Panama, Romania, Russian Federation, Slovakia </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 33,510 - 49,140 </td>
+   <td style="text-align:left;"> Canada, Czechia, Spain, Hungary, Israel, Italy, Japan, Poland, Portugal, Slovenia </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:left;"> 49,370 - 71,070 </td>
+   <td style="text-align:left;"> Austria, Belgium, Switzerland, Germany, France, The United Kingdom, Ireland, Netherlands, Sweden, USA </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
+
+
 ### Sex-ratio in mortality (all-cause and excess in 2020): Observations
 
 ::: {.cell fig.asp='0.9'}
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-2-1.png){width=1152}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-3-1.png){width=1152}
 :::
 :::
 
@@ -46,7 +101,7 @@ Inclusion criteria for this analysis are as follows:
 
 ::: {.cell fig.asp='1.4'}
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-3-1.png){width=1152}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-4-1.png){width=1152}
 :::
 :::
 
@@ -58,17 +113,191 @@ Inclusion criteria for this analysis are as follows:
 
 ::: {.cell fig.asp='0.818'}
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-4-1.png){width=1152}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-5-1.png){width=1152}
 :::
 :::
 
+
+#### Sex ratio of mortality by age, year and country income quintiles
+
+::: {.cell}
+
+```{.r .cell-code}
+sims_summary <- prep_sims_summary_by_inc_quint(sims, income)
+```
+
+::: {.cell-output .cell-output-stderr}
+```
+Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `logp5 = ifelse(...)`.
+Caused by warning in `log()`:
+! NaNs produced
+```
+:::
+
+```{.r .cell-code}
+prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %>% 
+  arrange(group) %>% select(-group) %>%
+  kbl(caption = "Median and interquartile range of predictions are shown") %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>% 
+  pack_rows("All cause deaths (expected): 2020", 1, 5) %>%
+  pack_rows("Excess deaths: 2020", 6, 10) %>%
+  pack_rows("Excess deaths: 2021", 11, 15) 
+```
+
+::: {.cell-output-display}
+
+`````{=html}
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Median and interquartile range of predictions are shown</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Age_Lower </th>
+   <th style="text-align:left;"> Quintile: 1 </th>
+   <th style="text-align:left;"> Quintile: 2 </th>
+   <th style="text-align:left;"> Quintile: 3 </th>
+   <th style="text-align:left;"> Quintile: 4 </th>
+   <th style="text-align:left;"> Quintile: 5 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="5"><td colspan="6" style="border-bottom: 0;"><strong>All cause deaths (expected): 2020</strong></td></tr>
+<tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 45 </td>
+   <td style="text-align:left;"> 1.86 (1.5-2.58) </td>
+   <td style="text-align:left;"> 2.14 (1.75-2.6) </td>
+   <td style="text-align:left;"> 3.2 (2.34-3.71) </td>
+   <td style="text-align:left;"> 2.97 (2.39-3.75) </td>
+   <td style="text-align:left;"> 2.26 (1.79-2.95) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 55 </td>
+   <td style="text-align:left;"> 1.71 (1.42-2.17) </td>
+   <td style="text-align:left;"> 1.85 (1.61-2.12) </td>
+   <td style="text-align:left;"> 2.47 (1.98-2.72) </td>
+   <td style="text-align:left;"> 2.33 (1.98-2.76) </td>
+   <td style="text-align:left;"> 1.88 (1.59-2.28) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 65 </td>
+   <td style="text-align:left;"> 1.57 (1.34-1.85) </td>
+   <td style="text-align:left;"> 1.61 (1.47-1.77) </td>
+   <td style="text-align:left;"> 1.89 (1.7-2.02) </td>
+   <td style="text-align:left;"> 1.83 (1.63-2.05) </td>
+   <td style="text-align:left;"> 1.57 (1.4-1.77) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 75 </td>
+   <td style="text-align:left;"> 1.44 (1.25-1.59) </td>
+   <td style="text-align:left;"> 1.43 (1.28-1.58) </td>
+   <td style="text-align:left;"> 1.47 (1.37-1.55) </td>
+   <td style="text-align:left;"> 1.44 (1.33-1.55) </td>
+   <td style="text-align:left;"> 1.31 (1.21-1.42) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 85 </td>
+   <td style="text-align:left;"> 1.25 (1.13-1.43) </td>
+   <td style="text-align:left;"> 1.26 (1.08-1.44) </td>
+   <td style="text-align:left;"> 1.14 (1.05-1.26) </td>
+   <td style="text-align:left;"> 1.12 (1.03-1.22) </td>
+   <td style="text-align:left;"> 1.09 (0.99-1.2) </td>
+  </tr>
+  <tr grouplength="5"><td colspan="6" style="border-bottom: 0;"><strong>Excess deaths: 2020</strong></td></tr>
+<tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 45 </td>
+   <td style="text-align:left;"> 2.1 (1.33-3.02) </td>
+   <td style="text-align:left;"> 3.05 (1.79-5.6) </td>
+   <td style="text-align:left;"> 2.37 (1.9-3.58) </td>
+   <td style="text-align:left;"> 3.91 (2.35-7.06) </td>
+   <td style="text-align:left;"> 3.61 (1.82-6.34) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 55 </td>
+   <td style="text-align:left;"> 2.11 (1.39-2.95) </td>
+   <td style="text-align:left;"> 2.66 (1.9-4.14) </td>
+   <td style="text-align:left;"> 2.31 (1.95-3.03) </td>
+   <td style="text-align:left;"> 3.22 (2.17-4.95) </td>
+   <td style="text-align:left;"> 2.9 (1.82-4.43) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 65 </td>
+   <td style="text-align:left;"> 2.06 (1.44-2.97) </td>
+   <td style="text-align:left;"> 2.32 (1.89-3.21) </td>
+   <td style="text-align:left;"> 2.23 (1.93-2.75) </td>
+   <td style="text-align:left;"> 2.66 (1.96-3.54) </td>
+   <td style="text-align:left;"> 2.35 (1.78-3.2) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 75 </td>
+   <td style="text-align:left;"> 2.01 (1.43-2.9) </td>
+   <td style="text-align:left;"> 2.11 (1.62-2.91) </td>
+   <td style="text-align:left;"> 2.05 (1.82-2.52) </td>
+   <td style="text-align:left;"> 2.1 (1.68-2.65) </td>
+   <td style="text-align:left;"> 2.08 (1.65-2.57) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 85 </td>
+   <td style="text-align:left;"> 1.98 (1.34-2.93) </td>
+   <td style="text-align:left;"> 1.94 (1.3-3.05) </td>
+   <td style="text-align:left;"> 1.86 (1.58-2.39) </td>
+   <td style="text-align:left;"> 1.62 (1.35-2.13) </td>
+   <td style="text-align:left;"> 1.74 (1.31-2.26) </td>
+  </tr>
+  <tr grouplength="5"><td colspan="6" style="border-bottom: 0;"><strong>Excess deaths: 2021</strong></td></tr>
+<tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 45 </td>
+   <td style="text-align:left;"> 1.76 (1.36-2.26) </td>
+   <td style="text-align:left;"> 1.62 (1.11-2.64) </td>
+   <td style="text-align:left;"> 2.1 (1.6-2.74) </td>
+   <td style="text-align:left;"> 2.17 (1.4-2.98) </td>
+   <td style="text-align:left;"> 2.52 (1.49-4.21) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 55 </td>
+   <td style="text-align:left;"> 1.77 (1.39-2.11) </td>
+   <td style="text-align:left;"> 1.63 (1.22-2.25) </td>
+   <td style="text-align:left;"> 1.9 (1.55-2.29) </td>
+   <td style="text-align:left;"> 2.21 (1.68-2.86) </td>
+   <td style="text-align:left;"> 2.32 (1.67-3.53) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 65 </td>
+   <td style="text-align:left;"> 1.72 (1.36-1.99) </td>
+   <td style="text-align:left;"> 1.61 (1.34-2.01) </td>
+   <td style="text-align:left;"> 1.71 (1.49-1.94) </td>
+   <td style="text-align:left;"> 2.22 (1.83-2.84) </td>
+   <td style="text-align:left;"> 2.21 (1.68-3.25) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 75 </td>
+   <td style="text-align:left;"> 1.6 (1.26-1.92) </td>
+   <td style="text-align:left;"> 1.62 (1.38-1.9) </td>
+   <td style="text-align:left;"> 1.54 (1.39-1.69) </td>
+   <td style="text-align:left;"> 2.16 (1.77-2.72) </td>
+   <td style="text-align:left;"> 2.15 (1.53-3.41) </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;padding-left: 2em;" indentlevel="1"> 85 </td>
+   <td style="text-align:left;"> 1.48 (1.11-1.96) </td>
+   <td style="text-align:left;"> 1.63 (1.28-1.95) </td>
+   <td style="text-align:left;"> 1.38 (1.23-1.55) </td>
+   <td style="text-align:left;"> 2.1 (1.56-2.9) </td>
+   <td style="text-align:left;"> 2.08 (1.25-3.71) </td>
+  </tr>
+</tbody>
+</table>
+
+`````
+
+:::
+:::
 
 
 #### Keeping composition of countries constant (only countries with all cause deaths disaggregate by gender in 2020 & 2021)
 
 ::: {.cell fig.asp='0.818'}
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-5-1.png){width=1152}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-7-1.png){width=1152}
 :::
 :::
 
@@ -91,7 +320,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-1.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-1.png){width=960}
 :::
 
 
@@ -103,7 +332,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 7,886.081 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-2.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-2.png){width=960}
 :::
 
 
@@ -115,7 +344,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 21,581.59 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-3.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-3.png){width=960}
 :::
 
 
@@ -127,7 +356,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 3,794.365 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-4.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-4.png){width=960}
 :::
 
 
@@ -139,7 +368,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 42,715.42 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-5.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-5.png){width=960}
 :::
 
 
@@ -151,7 +380,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-6.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-6.png){width=960}
 :::
 
 
@@ -163,7 +392,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 47,020.77 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-7.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-7.png){width=960}
 :::
 
 
@@ -175,7 +404,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 467,480.1 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-8.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-8.png){width=960}
 :::
 
 
@@ -187,7 +416,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 11,949.19 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-9.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-9.png){width=960}
 :::
 
 
@@ -199,7 +428,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 3,683.951 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-10.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-10.png){width=960}
 :::
 
 
@@ -211,7 +440,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 23,894.96 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-11.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-11.png){width=960}
 :::
 
 
@@ -223,7 +452,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 108,332.4 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-12.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-12.png){width=960}
 :::
 
 
@@ -235,7 +464,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 4,704.336 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-13.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-13.png){width=960}
 :::
 
 
@@ -247,7 +476,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 26,648.28 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-14.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-14.png){width=960}
 :::
 
 
@@ -259,7 +488,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 66,990.79 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-15.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-15.png){width=960}
 :::
 
 
@@ -271,7 +500,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 6,689.009 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-16.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-16.png){width=960}
 :::
 
 
@@ -283,7 +512,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 32,874.78 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-17.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-17.png){width=960}
 :::
 
 
@@ -295,7 +524,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-18.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-18.png){width=960}
 :::
 
 
@@ -307,7 +536,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 32,336.08 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-19.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-19.png){width=960}
 :::
 
 
@@ -319,7 +548,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 37,445.36 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-20.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-20.png){width=960}
 :::
 
 
@@ -331,7 +560,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 65,350.31 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-21.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-21.png){width=960}
 :::
 
 
@@ -343,7 +572,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 17,255.76 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-22.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-22.png){width=960}
 :::
 
 
@@ -355,7 +584,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 19,485.75 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-23.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-23.png){width=960}
 :::
 
 
@@ -367,7 +596,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 36,476.57 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-24.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-24.png){width=960}
 :::
 
 
@@ -379,7 +608,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 12,268.29 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-25.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-25.png){width=960}
 :::
 
 
@@ -391,7 +620,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 26,972.14 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-26.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-26.png){width=960}
 :::
 
 
@@ -403,7 +632,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-27.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-27.png){width=960}
 :::
 
 
@@ -415,7 +644,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 159,238.4 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-28.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-28.png){width=960}
 :::
 
 
@@ -427,7 +656,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-29.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-29.png){width=960}
 :::
 
 
@@ -439,7 +668,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 4,795.487 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-30.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-30.png){width=960}
 :::
 
 
@@ -451,7 +680,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 75,106.86 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-31.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-31.png){width=960}
 :::
 
 
@@ -463,7 +692,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 22,117.4 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-32.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-32.png){width=960}
 :::
 
 
@@ -475,7 +704,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 52,050.25 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-33.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-33.png){width=960}
 :::
 
 
@@ -487,7 +716,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 10,905.46 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-34.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-34.png){width=960}
 :::
 
 
@@ -499,7 +728,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 315,216 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-35.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-35.png){width=960}
 :::
 
 
@@ -511,7 +740,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 16,001.69 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-36.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-36.png){width=960}
 :::
 
 
@@ -523,7 +752,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-37.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-37.png){width=960}
 :::
 
 
@@ -535,7 +764,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 124,084.2 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-38.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-38.png){width=960}
 :::
 
 
@@ -547,7 +776,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 100,112.2 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-39.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-39.png){width=960}
 :::
 
 
@@ -559,7 +788,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 12,245.21 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-40.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-40.png){width=960}
 :::
 
 
@@ -571,7 +800,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 18,371.62 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-41.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-41.png){width=960}
 :::
 
 
@@ -583,7 +812,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 76,235.53 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-42.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-42.png){width=960}
 :::
 
 
@@ -595,7 +824,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 713,027.8 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-43.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-43.png){width=960}
 :::
 
 
@@ -607,7 +836,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 36,442.32 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-44.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-44.png){width=960}
 :::
 
 
@@ -619,7 +848,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 20,291.01 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-45.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-45.png){width=960}
 :::
 
 
@@ -631,7 +860,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 241.1147 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-46.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-46.png){width=960}
 :::
 
 
@@ -643,7 +872,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 3,273.921 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-47.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-47.png){width=960}
 :::
 
 
@@ -655,7 +884,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-48.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-48.png){width=960}
 :::
 
 
@@ -667,7 +896,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 144,710.5 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-49.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-49.png){width=960}
 :::
 
 
@@ -679,7 +908,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 501,112.5 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-50.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-50.png){width=960}
 :::
 
 
@@ -691,7 +920,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 189,834.3 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-6-51.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-51.png){width=960}
 :::
 :::
 
