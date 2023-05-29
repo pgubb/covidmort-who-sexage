@@ -109,10 +109,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
   <ul>
   <li><a href="#sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" id="toc-sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" class="nav-link" data-scroll-target="#sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles">Sample of countries in analysis data-set by GNI per capita quintiles</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul>
   <li><a href="#sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations" id="toc-sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations" class="nav-link" data-scroll-target="#sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations">Sex-ratio in mortality (all-cause and excess in 2020): Observations</a></li>
   <li><a href="#age-adjusted-poisson-model-with-interaction" id="toc-age-adjusted-poisson-model-with-interaction" class="nav-link" data-scroll-target="#age-adjusted-poisson-model-with-interaction">Age-adjusted poisson model (with interaction)</a></li>
   <li><a href="#relationship-between-predicted-sex-differences-in-mortality-and-country-income" id="toc-relationship-between-predicted-sex-differences-in-mortality-and-country-income" class="nav-link" data-scroll-target="#relationship-between-predicted-sex-differences-in-mortality-and-country-income">Relationship between predicted sex-differences in mortality and country income</a>
@@ -166,11 +168,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Countries with reported all-cause data disaggregated by age and sex in 2020</li>
 <li>The following 51 countries are included in this analysis: Argentina, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Republic of Moldova, Mexico, Netherlands, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Tunisia, Ukraine, USA, South Africa</li>
 </ul>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<section id="sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" class="level3">
-<h3 class="anchored" data-anchor-id="sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles">Sample of countries in analysis data-set by GNI per capita quintiles</h3>
+<section id="sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles" class="level4">
+<h4 class="anchored" data-anchor-id="sample-of-countries-in-analysis-data-set-by-gni-per-capita-quintiles">Sample of countries in analysis data-set by GNI per capita quintiles</h4>
 <div class="cell" data-fig.asp="0.9">
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -224,6 +223,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
 <section id="sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations" class="level3">
 <h3 class="anchored" data-anchor-id="sex-ratio-in-mortality-all-cause-and-excess-in-2020-observations">Sex-ratio in mortality (all-cause and excess in 2020): Observations</h3>
 <div class="cell" data-fig.asp="0.9">
@@ -260,46 +262,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Caused by warning in `log()`:
 ! NaNs produced</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prep_results_table</span>(sims_summary, <span class="at">slct_metric =</span> <span class="st">"Relative risk (Males/Females)"</span>, <span class="at">slct_source =</span> <span class="fu">c</span>(<span class="st">"All cause deaths (expected)"</span>, <span class="st">"Excess deaths"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(group) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>group) <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prep_results_table</span>(sims_summary, <span class="at">slct_metric =</span> <span class="st">"Relative risk (Males/Females)"</span>, <span class="at">slct_source =</span> <span class="fu">c</span>(<span class="st">"All cause deaths (expected)"</span>, <span class="st">"Excess deaths"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(group) <span class="sc">%&gt;%</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">caption =</span> <span class="st">"Median and interquartile range of predictions are shown"</span>, <span class="at">format =</span> <span class="st">"markdown"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"All cause deaths (expected): 2020"</span>, <span class="dv">1</span>, <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Excess deaths: 2020"</span>, <span class="dv">6</span>, <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pack_rows</span>(<span class="st">"Excess deaths: 2021"</span>, <span class="dv">11</span>, <span class="dv">15</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)  <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in kable_styling(kable_input, "none", htmltable_class = light_class, :
 Please specify format in kable. kableExtra can customize either HTML or LaTeX
 outputs. See https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning in pack_rows(., "All cause deaths (expected): 2020", 1, 5): Please
-specify format in kable. kableExtra can customize either HTML or LaTeX outputs.
-See https://haozhu233.github.io/kableExtra/ for details.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in pack_rows(., "Excess deaths: 2020", 6, 10): Please specify format in
-kable. kableExtra can customize either HTML or LaTeX outputs. See
-https://haozhu233.github.io/kableExtra/ for details.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in pack_rows(., "Excess deaths: 2021", 11, 15): Please specify format
-in kable. kableExtra can customize either HTML or LaTeX outputs. See
+<pre><code>Warning in kable_styling(., font_size = 9): Please specify format in kable.
+kableExtra can customize either HTML or LaTeX outputs. See
 https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 </div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Median and interquartile range of predictions are shown</caption>
 <colgroup>
-<col style="width: 10%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
 </colgroup>
 <thead>
 <tr class="header">
+<th style="text-align: left;">group</th>
 <th style="text-align: right;">Age_Lower</th>
 <th style="text-align: left;">Quintile: 1</th>
 <th style="text-align: left;">Quintile: 2</th>
@@ -310,6 +302,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">All cause deaths (expected): 2020</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: left;">1.86 (1.5-2.58)</td>
 <td style="text-align: left;">2.14 (1.75-2.6)</td>
@@ -318,6 +311,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.26 (1.79-2.95)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">All cause deaths (expected): 2020</td>
 <td style="text-align: right;">55</td>
 <td style="text-align: left;">1.71 (1.42-2.17)</td>
 <td style="text-align: left;">1.85 (1.61-2.12)</td>
@@ -326,6 +320,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">1.88 (1.59-2.28)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">All cause deaths (expected): 2020</td>
 <td style="text-align: right;">65</td>
 <td style="text-align: left;">1.57 (1.34-1.85)</td>
 <td style="text-align: left;">1.61 (1.47-1.77)</td>
@@ -334,6 +329,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">1.57 (1.4-1.77)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">All cause deaths (expected): 2020</td>
 <td style="text-align: right;">75</td>
 <td style="text-align: left;">1.44 (1.25-1.59)</td>
 <td style="text-align: left;">1.43 (1.28-1.58)</td>
@@ -342,6 +338,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">1.31 (1.21-1.42)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">All cause deaths (expected): 2020</td>
 <td style="text-align: right;">85</td>
 <td style="text-align: left;">1.25 (1.13-1.43)</td>
 <td style="text-align: left;">1.26 (1.08-1.44)</td>
@@ -350,6 +347,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">1.09 (0.99-1.2)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Excess deaths: 2020</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: left;">2.1 (1.33-3.02)</td>
 <td style="text-align: left;">3.05 (1.79-5.6)</td>
@@ -358,6 +356,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">3.61 (1.82-6.34)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Excess deaths: 2020</td>
 <td style="text-align: right;">55</td>
 <td style="text-align: left;">2.11 (1.39-2.95)</td>
 <td style="text-align: left;">2.66 (1.9-4.14)</td>
@@ -366,6 +365,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.9 (1.82-4.43)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Excess deaths: 2020</td>
 <td style="text-align: right;">65</td>
 <td style="text-align: left;">2.06 (1.44-2.97)</td>
 <td style="text-align: left;">2.32 (1.89-3.21)</td>
@@ -374,6 +374,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.35 (1.78-3.2)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Excess deaths: 2020</td>
 <td style="text-align: right;">75</td>
 <td style="text-align: left;">2.01 (1.43-2.9)</td>
 <td style="text-align: left;">2.11 (1.62-2.91)</td>
@@ -382,6 +383,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.08 (1.65-2.57)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Excess deaths: 2020</td>
 <td style="text-align: right;">85</td>
 <td style="text-align: left;">1.98 (1.34-2.93)</td>
 <td style="text-align: left;">1.94 (1.3-3.05)</td>
@@ -390,6 +392,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">1.74 (1.31-2.26)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Excess deaths: 2021</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: left;">1.76 (1.36-2.26)</td>
 <td style="text-align: left;">1.62 (1.11-2.64)</td>
@@ -398,6 +401,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.52 (1.49-4.21)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Excess deaths: 2021</td>
 <td style="text-align: right;">55</td>
 <td style="text-align: left;">1.77 (1.39-2.11)</td>
 <td style="text-align: left;">1.63 (1.22-2.25)</td>
@@ -406,6 +410,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.32 (1.67-3.53)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Excess deaths: 2021</td>
 <td style="text-align: right;">65</td>
 <td style="text-align: left;">1.72 (1.36-1.99)</td>
 <td style="text-align: left;">1.61 (1.34-2.01)</td>
@@ -414,6 +419,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.21 (1.68-3.25)</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Excess deaths: 2021</td>
 <td style="text-align: right;">75</td>
 <td style="text-align: left;">1.6 (1.26-1.92)</td>
 <td style="text-align: left;">1.62 (1.38-1.9)</td>
@@ -422,6 +428,7 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 <td style="text-align: left;">2.15 (1.53-3.41)</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Excess deaths: 2021</td>
 <td style="text-align: right;">85</td>
 <td style="text-align: left;">1.48 (1.11-1.96)</td>
 <td style="text-align: left;">1.63 (1.28-1.95)</td>
@@ -432,6 +439,13 @@ https://haozhu233.github.io/kableExtra/ for details.</code></pre>
 </tbody>
 </table>
 </div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %&gt;% </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   arrange(group) %&gt;% select(-group) %&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   kbl(caption = "Median and interquartile range of predictions are shown", format = "markdown") %&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   kable_classic(full_width = F, html_font = "Cambria") %&gt;% </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   pack_rows("All cause deaths (expected): 2020", 1, 5) %&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   pack_rows("Excess deaths: 2020", 6, 10) %&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   pack_rows("Excess deaths: 2021", 11, 15) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="keeping-composition-of-countries-constant-only-countries-with-all-cause-deaths-disaggregate-by-gender-in-2020-2021" class="level4">

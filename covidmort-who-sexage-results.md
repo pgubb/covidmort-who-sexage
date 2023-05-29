@@ -30,9 +30,7 @@ Inclusion criteria for this analysis are as follows:
 - Countries with reported all-cause data disaggregated by age and sex in 2020
 - The following 51 countries are included in this analysis: Argentina, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Republic of Moldova, Mexico, Netherlands, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Tunisia, Ukraine, USA, South Africa
 
-## Results
-
-### Sample of countries in analysis data-set by GNI per capita quintiles
+#### Sample of countries in analysis data-set by GNI per capita quintiles
 
 ::: {.cell fig.asp='0.9'}
 ::: {.cell-output-display}
@@ -46,6 +44,8 @@ Inclusion criteria for this analysis are as follows:
 :::
 :::
 
+
+## Results
 
 ### Sex-ratio in mortality (all-cause and excess in 2020): Observations
 
@@ -96,13 +96,11 @@ Caused by warning in `log()`:
 :::
 
 ```{.r .cell-code}
-prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %>% 
-  arrange(group) %>% select(-group) %>%
+prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %>%
+  arrange(group) %>%
   kbl(caption = "Median and interquartile range of predictions are shown", format = "markdown") %>%
-  kable_classic(full_width = F, html_font = "Cambria") %>% 
-  pack_rows("All cause deaths (expected): 2020", 1, 5) %>%
-  pack_rows("Excess deaths: 2020", 6, 10) %>%
-  pack_rows("Excess deaths: 2021", 11, 15) 
+  kable_classic(full_width = F, html_font = "Cambria")  %>% 
+  kable_styling(font_size = 9)
 ```
 
 ::: {.cell-output .cell-output-stderr}
@@ -115,24 +113,8 @@ outputs. See https://haozhu233.github.io/kableExtra/ for details.
 
 ::: {.cell-output .cell-output-stderr}
 ```
-Warning in pack_rows(., "All cause deaths (expected): 2020", 1, 5): Please
-specify format in kable. kableExtra can customize either HTML or LaTeX outputs.
-See https://haozhu233.github.io/kableExtra/ for details.
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in pack_rows(., "Excess deaths: 2020", 6, 10): Please specify format in
-kable. kableExtra can customize either HTML or LaTeX outputs. See
-https://haozhu233.github.io/kableExtra/ for details.
-```
-:::
-
-::: {.cell-output .cell-output-stderr}
-```
-Warning in pack_rows(., "Excess deaths: 2021", 11, 15): Please specify format
-in kable. kableExtra can customize either HTML or LaTeX outputs. See
+Warning in kable_styling(., font_size = 9): Please specify format in kable.
+kableExtra can customize either HTML or LaTeX outputs. See
 https://haozhu233.github.io/kableExtra/ for details.
 ```
 :::
@@ -140,24 +122,34 @@ https://haozhu233.github.io/kableExtra/ for details.
 ::: {.cell-output-display}
 Table: Median and interquartile range of predictions are shown
 
-| Age_Lower|Quintile: 1      |Quintile: 2      |Quintile: 3      |Quintile: 4      |Quintile: 5      |
-|---------:|:----------------|:----------------|:----------------|:----------------|:----------------|
-|        45|1.86 (1.5-2.58)  |2.14 (1.75-2.6)  |3.2 (2.34-3.71)  |2.97 (2.39-3.75) |2.26 (1.79-2.95) |
-|        55|1.71 (1.42-2.17) |1.85 (1.61-2.12) |2.47 (1.98-2.72) |2.33 (1.98-2.76) |1.88 (1.59-2.28) |
-|        65|1.57 (1.34-1.85) |1.61 (1.47-1.77) |1.89 (1.7-2.02)  |1.83 (1.63-2.05) |1.57 (1.4-1.77)  |
-|        75|1.44 (1.25-1.59) |1.43 (1.28-1.58) |1.47 (1.37-1.55) |1.44 (1.33-1.55) |1.31 (1.21-1.42) |
-|        85|1.25 (1.13-1.43) |1.26 (1.08-1.44) |1.14 (1.05-1.26) |1.12 (1.03-1.22) |1.09 (0.99-1.2)  |
-|        45|2.1 (1.33-3.02)  |3.05 (1.79-5.6)  |2.37 (1.9-3.58)  |3.91 (2.35-7.06) |3.61 (1.82-6.34) |
-|        55|2.11 (1.39-2.95) |2.66 (1.9-4.14)  |2.31 (1.95-3.03) |3.22 (2.17-4.95) |2.9 (1.82-4.43)  |
-|        65|2.06 (1.44-2.97) |2.32 (1.89-3.21) |2.23 (1.93-2.75) |2.66 (1.96-3.54) |2.35 (1.78-3.2)  |
-|        75|2.01 (1.43-2.9)  |2.11 (1.62-2.91) |2.05 (1.82-2.52) |2.1 (1.68-2.65)  |2.08 (1.65-2.57) |
-|        85|1.98 (1.34-2.93) |1.94 (1.3-3.05)  |1.86 (1.58-2.39) |1.62 (1.35-2.13) |1.74 (1.31-2.26) |
-|        45|1.76 (1.36-2.26) |1.62 (1.11-2.64) |2.1 (1.6-2.74)   |2.17 (1.4-2.98)  |2.52 (1.49-4.21) |
-|        55|1.77 (1.39-2.11) |1.63 (1.22-2.25) |1.9 (1.55-2.29)  |2.21 (1.68-2.86) |2.32 (1.67-3.53) |
-|        65|1.72 (1.36-1.99) |1.61 (1.34-2.01) |1.71 (1.49-1.94) |2.22 (1.83-2.84) |2.21 (1.68-3.25) |
-|        75|1.6 (1.26-1.92)  |1.62 (1.38-1.9)  |1.54 (1.39-1.69) |2.16 (1.77-2.72) |2.15 (1.53-3.41) |
-|        85|1.48 (1.11-1.96) |1.63 (1.28-1.95) |1.38 (1.23-1.55) |2.1 (1.56-2.9)   |2.08 (1.25-3.71) |
+|group                             | Age_Lower|Quintile: 1      |Quintile: 2      |Quintile: 3      |Quintile: 4      |Quintile: 5      |
+|:---------------------------------|---------:|:----------------|:----------------|:----------------|:----------------|:----------------|
+|All cause deaths (expected): 2020 |        45|1.86 (1.5-2.58)  |2.14 (1.75-2.6)  |3.2 (2.34-3.71)  |2.97 (2.39-3.75) |2.26 (1.79-2.95) |
+|All cause deaths (expected): 2020 |        55|1.71 (1.42-2.17) |1.85 (1.61-2.12) |2.47 (1.98-2.72) |2.33 (1.98-2.76) |1.88 (1.59-2.28) |
+|All cause deaths (expected): 2020 |        65|1.57 (1.34-1.85) |1.61 (1.47-1.77) |1.89 (1.7-2.02)  |1.83 (1.63-2.05) |1.57 (1.4-1.77)  |
+|All cause deaths (expected): 2020 |        75|1.44 (1.25-1.59) |1.43 (1.28-1.58) |1.47 (1.37-1.55) |1.44 (1.33-1.55) |1.31 (1.21-1.42) |
+|All cause deaths (expected): 2020 |        85|1.25 (1.13-1.43) |1.26 (1.08-1.44) |1.14 (1.05-1.26) |1.12 (1.03-1.22) |1.09 (0.99-1.2)  |
+|Excess deaths: 2020               |        45|2.1 (1.33-3.02)  |3.05 (1.79-5.6)  |2.37 (1.9-3.58)  |3.91 (2.35-7.06) |3.61 (1.82-6.34) |
+|Excess deaths: 2020               |        55|2.11 (1.39-2.95) |2.66 (1.9-4.14)  |2.31 (1.95-3.03) |3.22 (2.17-4.95) |2.9 (1.82-4.43)  |
+|Excess deaths: 2020               |        65|2.06 (1.44-2.97) |2.32 (1.89-3.21) |2.23 (1.93-2.75) |2.66 (1.96-3.54) |2.35 (1.78-3.2)  |
+|Excess deaths: 2020               |        75|2.01 (1.43-2.9)  |2.11 (1.62-2.91) |2.05 (1.82-2.52) |2.1 (1.68-2.65)  |2.08 (1.65-2.57) |
+|Excess deaths: 2020               |        85|1.98 (1.34-2.93) |1.94 (1.3-3.05)  |1.86 (1.58-2.39) |1.62 (1.35-2.13) |1.74 (1.31-2.26) |
+|Excess deaths: 2021               |        45|1.76 (1.36-2.26) |1.62 (1.11-2.64) |2.1 (1.6-2.74)   |2.17 (1.4-2.98)  |2.52 (1.49-4.21) |
+|Excess deaths: 2021               |        55|1.77 (1.39-2.11) |1.63 (1.22-2.25) |1.9 (1.55-2.29)  |2.21 (1.68-2.86) |2.32 (1.67-3.53) |
+|Excess deaths: 2021               |        65|1.72 (1.36-1.99) |1.61 (1.34-2.01) |1.71 (1.49-1.94) |2.22 (1.83-2.84) |2.21 (1.68-3.25) |
+|Excess deaths: 2021               |        75|1.6 (1.26-1.92)  |1.62 (1.38-1.9)  |1.54 (1.39-1.69) |2.16 (1.77-2.72) |2.15 (1.53-3.41) |
+|Excess deaths: 2021               |        85|1.48 (1.11-1.96) |1.63 (1.28-1.95) |1.38 (1.23-1.55) |2.1 (1.56-2.9)   |2.08 (1.25-3.71) |
 :::
+
+```{.r .cell-code}
+# prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All cause deaths (expected)", "Excess deaths")) %>% 
+#   arrange(group) %>% select(-group) %>%
+#   kbl(caption = "Median and interquartile range of predictions are shown", format = "markdown") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>% 
+#   pack_rows("All cause deaths (expected): 2020", 1, 5) %>%
+#   pack_rows("Excess deaths: 2020", 6, 10) %>%
+#   pack_rows("Excess deaths: 2021", 11, 15) 
+```
 :::
 
 
