@@ -258,7 +258,8 @@ if (slct_metric == "Mortality rate (per 100,000) [log-scale]") {
   if (!is.null(group_data)) {
     data_to_plot <- data_to_plot %>%
       left_join(group_data, by = c("iso3c")) %>%
-      filter(reported_gender_2020 == 1 & reported_gender_2021 == 1)
+      filter(reported_gender_2020 == 1 & reported_gender_2021 == 1) %>%
+      filter()
     }
 
   # For prediction data creating the loess that tracks expected value over GNI per capita --------

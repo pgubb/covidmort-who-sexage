@@ -53,7 +53,7 @@ wdi <- function(indicator = c("gni_pcap_ppp" = "NY.GNP.PCAP.PP.CD")) {
   addons <- tibble(
     iso3c = c("TWN", "CZE"),
     gni_pcap_ppp = c(55078,39220),
-    income = rep(c("High income"), 2)
+    income = c(rep(c("High income"), 2))
   )
 
   # Downloaidng GNI per capita (PPP) data from WDI (World Bank)
@@ -61,6 +61,7 @@ wdi <- function(indicator = c("gni_pcap_ppp" = "NY.GNP.PCAP.PP.CD")) {
     mutate(iso3c = as.character(iso3c)) %>%
     select(iso3c, iso2c, gni_pcap_ppp, income) %>%
     filter(income != "Aggregates") %>%
+    mutate(gni_pcap_ppp = ifelse(iso3c == "CUB", 8920, gni_pcap_ppp)) %>%
     bind_rows(addons) %>%
     select(-iso2c)
 
@@ -283,19 +284,18 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
       left_join(covid_deaths, by = "iso3c") %>%
       left_join(data_types, by = "iso3c") %>%
 
-      # Applying inclusion criteria
-      filter(Age_Lower >= params[["AGE_THRESHOLD"]]) %>%
-      filter(NxTOT >= params[["POP_THRESHOLD"]]) %>%
-      filter(cum_covid_deaths_2020 >= params[["DEATHS_THRESHOLD"]]) %>%
-      filter(iso3c %not_in% params[["COUNTRY_EXCLUSIONS"]]) %>%
-
-      #
       mutate(
         keepobs = ifelse((reported_gender_2020 == params[["USE_ACTUALS_BYSX_2020"]] & Year == 2020) |
                            (reported_gender_2021 == params[["USE_ACTUALS_BYSX_2021"]] & Year == 2021), 1, 0)
       ) %>%
 
+      # Applying inclusion criteria
       filter(keepobs == 1) %>%
+
+      filter(Age_Lower >= params[["AGE_THRESHOLD"]]) %>%
+      filter(excess_deaths_total >= params[["DEATHS_THRESHOLD"]]) %>%
+      #filter(NxTOT >= params[["POP_THRESHOLD"]]) %>%
+      filter(iso3c %not_in% params[["COUNTRY_EXCLUSIONS"]]) %>%
 
       # Creating predictor variables for Poisson regression
       mutate(

@@ -18,36 +18,37 @@ This paper seeks to understand how mortality risks from COVID for men and women 
 
 ## Data
 
-This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:"0-24" , "25-34" , 35-44", "45-54", "55-64", "65-74", "75-84", ">85".
+This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:"0-24" , "25-34" , 35-44", "45-54", "55-64", "65-74", "75-84", ">85". However, only age groups at or above 45 years of age are considered. 
 
 Out of 195 countries in the WHO database, 75 countries have excess death estimates based on reported all-cause death records disaggregated by gender for 2020 and of these, 61 also use reported deaths by gender and age for 2021.
 
-Inclusion criteria for this analysis are as follows: 
+Country inclusion criteria for this analysis are as follows: 
 
-- Age groups at or above 45 years of age
-- Countries with a total population of at least 1m 
-- Countries with a cumulative official COVID-19 death toll of at least 2000 deaths at the end of 2020
-- Countries with reported all-cause data disaggregated by age and sex in 2020
-- The following 51 countries are included in this analysis: Argentina, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Ireland, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Republic of Moldova, Mexico, Netherlands, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Slovenia, Sweden, Tunisia, Ukraine, USA, South Africa
+- Have reported all-cause data disaggregated by age and sex in 2020 or 2021
+- Have total excess deaths (for both sexes) of at least 2000 deaths in 2020 or 2021
 
-#### Sample of countries in analysis data-set by GNI per capita quintiles
+- The following 65 countries are included in this analysis: Albania, Argentina, Australia, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Cuba, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, Estonia, Finland, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Kyrgyzstan, Republic of Korea, Kuwait, Lithuania, Latvia, Republic of Moldova, Mexico, Mongolia, Nicaragua, Netherlands, Oman, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Sweden, Thailand, Tunisia, Ukraine, Uruguay, USA, Uzbekistan, South Africa
+- These are the countries that meet the inclusion criteria in 2020: Albania, Argentina, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Iran (Islamic Republic of), Iraq, Israel, Italy, Kazakhstan, Kyrgyzstan, Kuwait, Lithuania, Republic of Moldova, Mexico, Nicaragua, Netherlands, Oman, Panama, Peru, Poland, Portugal, Romania, Russian Federation, Serbia, Slovakia, Sweden, Thailand, Tunisia, Ukraine, USA, Uzbekistan, South Africa
+- These are the countries that meet the inclusion criteria in 2021: Albania, Australia, Austria, Azerbaijan, Belgium, Bulgaria, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Cuba, Czechia, Germany, Dominican Republic, Ecuador, Spain, Estonia, Finland, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Iran (Islamic Republic of), Israel, Italy, Japan, Kazakhstan, Republic of Korea, Kuwait, Lithuania, Latvia, Republic of Moldova, Mexico, Mongolia, Netherlands, Oman, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Sweden, Thailand, Ukraine, Uruguay, USA, Uzbekistan, South Africa
+
+#### Table 1: Sample of countries in analysis data-set by GNI per capita (PPP) quintiles
 
 ::: {.cell fig.asp='0.9'}
 ::: {.cell-output-display}
-| Income quintile| No. of countries|Range of GNI per capita (PPP) in quintile |Countires in quintile                                                                                                                     |
-|---------------:|----------------:|:-----------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
-|               1|               11|8,710 - 14,290                            |Bolivia (Plurinational State of), Ecuador, Egypt, Guatemala, Iraq, Republic of Moldova, Peru, Paraguay, Tunisia, Ukraine, South Africa    |
-|               2|               10|14,470 - 21,260                           |Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Costa Rica, Dominican Republic, Georgia, Iran (Islamic Republic of), Mexico, Serbia |
-|               3|               10|22,100 - 32,740                           |Argentina, Bulgaria, Chile, Greece, Croatia, Kazakhstan, Panama, Romania, Russian Federation, Slovakia                                    |
-|               4|               10|33,510 - 49,140                           |Canada, Czechia, Spain, Hungary, Israel, Italy, Japan, Poland, Portugal, Slovenia                                                         |
-|               5|               10|49,370 - 71,070                           |Austria, Belgium, Switzerland, Germany, France, The United Kingdom, Ireland, Netherlands, Sweden, USA                                     |
+| Income quintile| No. of countries|Range of GNI per capita (PPP) in quintile |Countires in quintile                                                                                                                                                                 |
+|---------------:|----------------:|:-----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|               1|               13|5,000 - 13,510                            |Bolivia (Plurinational State of), Cuba, Ecuador, Egypt, Guatemala, Iraq, Kyrgyzstan, Mongolia, Nicaragua, Peru, Tunisia, Ukraine, Uzbekistan                                          |
+|               2|               13|13,770 - 18,360                           |Albania, Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Dominican Republic, Georgia, Iran (Islamic Republic of), Republic of Moldova, Paraguay, Serbia, Thailand, South Africa |
+|               3|               13|19,630 - 32,600                           |Argentina, Bulgaria, Chile, Costa Rica, Greece, Croatia, Kazakhstan, Latvia, Mexico, Panama, Romania, Russian Federation, Uruguay                                                     |
+|               4|               13|32,740 - 46,190                           |Czechia, Spain, Estonia, Hungary, Israel, Italy, Japan, Republic of Korea, Lithuania, Oman, Poland, Portugal, Slovakia                                                                |
+|               5|               13|49,140 - 71,070                           |Australia, Austria, Belgium, Canada, Switzerland, Germany, Finland, France, The United Kingdom, Kuwait, Netherlands, Sweden, USA                                                      |
 :::
 :::
 
 
 ## Results
 
-### Sex-ratio in mortality (all-cause and excess in 2020): Observations
+### Figure 1: Sex-ratio in mortality (all-cause and excess in 2020): Observations
 
 ::: {.cell fig.asp='0.9'}
 ::: {.cell-output-display}
@@ -57,7 +58,7 @@ Inclusion criteria for this analysis are as follows:
 
 
 
-### Age-adjusted poisson model (with interaction)
+### Figure 2: Poisson model results
 
 ::: {.cell fig.asp='1.4'}
 ::: {.cell-output-display}
@@ -68,7 +69,8 @@ Inclusion criteria for this analysis are as follows:
 
 ### Relationship between predicted sex-differences in mortality and country income
 
-#### All available data (composition of countries changes in 2021)
+#### Figure 3: Sex-ratio of mortality vs. country income 
+All available data (composition of countries changes from 2020 to 2021)
 
 
 ::: {.cell fig.asp='0.818'}
@@ -78,7 +80,7 @@ Inclusion criteria for this analysis are as follows:
 :::
 
 
-#### Sex ratio of mortality by age, year and country income quintiles
+#### Table 2: Sex ratio of mortality by age, year and country income quintiles
 
 ::: {.cell}
 ::: {.cell-output-display}
@@ -86,26 +88,27 @@ Table: Median and interquartile range of predictions are shown
 
 |group                             | Age_Lower|Quintile: 1      |Quintile: 2      |Quintile: 3      |Quintile: 4      |Quintile: 5      |
 |:---------------------------------|---------:|:----------------|:----------------|:----------------|:----------------|:----------------|
-|All cause deaths (expected): 2020 |        45|1.86 (1.5-2.58)  |2.14 (1.75-2.6)  |3.2 (2.34-3.71)  |2.97 (2.39-3.75) |2.26 (1.79-2.95) |
-|All cause deaths (expected): 2020 |        55|1.71 (1.42-2.17) |1.85 (1.61-2.12) |2.47 (1.98-2.72) |2.33 (1.98-2.76) |1.88 (1.59-2.28) |
-|All cause deaths (expected): 2020 |        65|1.57 (1.34-1.85) |1.61 (1.47-1.77) |1.89 (1.7-2.02)  |1.83 (1.63-2.05) |1.57 (1.4-1.77)  |
-|All cause deaths (expected): 2020 |        75|1.44 (1.25-1.59) |1.43 (1.28-1.58) |1.47 (1.37-1.55) |1.44 (1.33-1.55) |1.31 (1.21-1.42) |
-|All cause deaths (expected): 2020 |        85|1.25 (1.13-1.43) |1.26 (1.08-1.44) |1.14 (1.05-1.26) |1.12 (1.03-1.22) |1.09 (0.99-1.2)  |
-|Excess deaths: 2020               |        45|2.1 (1.33-3.02)  |3.05 (1.79-5.6)  |2.37 (1.9-3.58)  |3.91 (2.35-7.06) |3.61 (1.82-6.34) |
-|Excess deaths: 2020               |        55|2.11 (1.39-2.95) |2.66 (1.9-4.14)  |2.31 (1.95-3.03) |3.22 (2.17-4.95) |2.9 (1.82-4.43)  |
-|Excess deaths: 2020               |        65|2.06 (1.44-2.97) |2.32 (1.89-3.21) |2.23 (1.93-2.75) |2.66 (1.96-3.54) |2.35 (1.78-3.2)  |
-|Excess deaths: 2020               |        75|2.01 (1.43-2.9)  |2.11 (1.62-2.91) |2.05 (1.82-2.52) |2.1 (1.68-2.65)  |2.08 (1.65-2.57) |
-|Excess deaths: 2020               |        85|1.98 (1.34-2.93) |1.94 (1.3-3.05)  |1.86 (1.58-2.39) |1.62 (1.35-2.13) |1.74 (1.31-2.26) |
-|Excess deaths: 2021               |        45|1.76 (1.36-2.26) |1.62 (1.11-2.64) |2.1 (1.6-2.74)   |2.17 (1.4-2.98)  |2.52 (1.49-4.21) |
-|Excess deaths: 2021               |        55|1.77 (1.39-2.11) |1.63 (1.22-2.25) |1.9 (1.55-2.29)  |2.21 (1.68-2.86) |2.32 (1.67-3.53) |
-|Excess deaths: 2021               |        65|1.72 (1.36-1.99) |1.61 (1.34-2.01) |1.71 (1.49-1.94) |2.22 (1.83-2.84) |2.21 (1.68-3.25) |
-|Excess deaths: 2021               |        75|1.6 (1.26-1.92)  |1.62 (1.38-1.9)  |1.54 (1.39-1.69) |2.16 (1.77-2.72) |2.15 (1.53-3.41) |
-|Excess deaths: 2021               |        85|1.48 (1.11-1.96) |1.63 (1.28-1.95) |1.38 (1.23-1.55) |2.1 (1.56-2.9)   |2.08 (1.25-3.71) |
+|All cause deaths (expected): 2020 |        45|1.75 (1.49-2.48) |2.44 (1.92-2.94) |3.05 (2.1-3.63)  |2.98 (2.3-3.74)  |2.16 (1.64-2.88) |
+|All cause deaths (expected): 2020 |        55|1.66 (1.42-2.08) |2.03 (1.74-2.34) |2.38 (1.83-2.68) |2.34 (1.93-2.76) |1.82 (1.49-2.24) |
+|All cause deaths (expected): 2020 |        65|1.58 (1.35-1.76) |1.69 (1.54-1.9)  |1.85 (1.61-1.99) |1.84 (1.61-2.05) |1.54 (1.35-1.76) |
+|All cause deaths (expected): 2020 |        75|1.43 (1.26-1.59) |1.48 (1.31-1.63) |1.44 (1.33-1.53) |1.44 (1.33-1.56) |1.3 (1.18-1.41)  |
+|All cause deaths (expected): 2020 |        85|1.25 (1.12-1.5)  |1.28 (1.09-1.43) |1.12 (1.03-1.25) |1.13 (1.04-1.23) |1.08 (0.95-1.19) |
+|Excess deaths: 2020               |        45|2.13 (1.35-3.08) |3.12 (1.81-4.96) |2.27 (1.86-3.03) |4.86 (3-7.8)     |3.64 (2.29-6.34) |
+|Excess deaths: 2020               |        55|2.18 (1.47-3)    |2.54 (1.68-3.5)  |2.23 (1.92-2.75) |3.7 (2.57-5.11)  |2.89 (1.95-4.43) |
+|Excess deaths: 2020               |        65|2.18 (1.59-3)    |2.18 (1.72-2.71) |2.18 (1.92-2.6)  |2.79 (2.15-3.43) |2.33 (1.72-3.18) |
+|Excess deaths: 2020               |        75|2.16 (1.6-2.97)  |1.89 (1.54-2.4)  |2.03 (1.81-2.48) |2.09 (1.68-2.47) |1.94 (1.52-2.46) |
+|Excess deaths: 2020               |        85|2.12 (1.52-3.1)  |1.66 (1.22-2.41) |1.9 (1.6-2.53)   |1.57 (1.31-1.9)  |1.57 (1.16-2.04) |
+|Excess deaths: 2021               |        45|1.78 (1.23-2.43) |1.69 (1.12-2.7)  |1.97 (1.53-2.75) |2.4 (1.66-3.22)  |2.24 (1.23-3.94) |
+|Excess deaths: 2021               |        55|1.76 (1.2-2.18)  |1.54 (1.17-2.16) |1.85 (1.54-2.29) |2.25 (1.77-2.8)  |2.15 (1.37-3.36) |
+|Excess deaths: 2021               |        65|1.66 (1.15-2)    |1.54 (1.27-1.87) |1.74 (1.5-2)     |2.1 (1.78-2.57)  |2.11 (1.54-3.18) |
+|Excess deaths: 2021               |        75|1.48 (1.06-1.89) |1.54 (1.31-1.76) |1.56 (1.37-1.81) |2 (1.66-2.44)    |2.13 (1.42-3.42) |
+|Excess deaths: 2021               |        85|1.34 (0.91-1.87) |1.5 (1.15-1.81)  |1.41 (1.18-1.73) |1.89 (1.42-2.6)  |2.07 (1.15-3.94) |
 :::
 :::
 
 
-#### Keeping composition of countries constant (only countries with all cause deaths disaggregate by gender in 2020 & 2021)
+#### Figure 4: Sex-ratio of mortality vs. country income 
+Keeping composition of countries constant (only countries with all cause deaths disaggregate by gender in 2020 & 2021)
 
 ::: {.cell fig.asp='0.818'}
 ::: {.cell-output-display}
@@ -117,12 +120,24 @@ Table: Median and interquartile range of predictions are shown
 
 ## Annex 
 
-### By country
+### Observatios and predictions by country
 
 The following set of figures display observed and predicted values of mortality rates, the sex-ratio of mortality rates (males/females) and the sex-gap of mortality rates (males - females) by age, for each country in the analysis dataset. 
 
 
 ::: {.cell fig.asp='0.818'}
+
+#### Albania 
+- Total population: 2,864,098 
+- Total official COVID deaths in 2020 (Our World in Data): 1,170 
+- Total official COVID deaths in 2021  (Our World in Data): 2,042 
+- Total excess deaths in 2020  (WHO): 6,015.699 
+- Total excess deaths in 2021  (WHO): 9,086.141 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-1.png){width=960}
+:::
+
 
 #### Argentina 
 - Total population: 44,985,105 
@@ -132,7 +147,19 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-1.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-2.png){width=960}
+:::
+
+
+#### Australia 
+- Total population: 25,625,670 
+- Total official COVID deaths in 2020 (Our World in Data): 920 
+- Total official COVID deaths in 2021  (Our World in Data): 1,523 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 4,570.856 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-3.png){width=960}
 :::
 
 
@@ -144,7 +171,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 7,886.081 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-2.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-4.png){width=960}
 :::
 
 
@@ -156,7 +183,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 21,581.59 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-3.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-5.png){width=960}
 :::
 
 
@@ -168,7 +195,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 3,794.365 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-4.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-6.png){width=960}
 :::
 
 
@@ -180,7 +207,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 42,715.42 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-5.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-7.png){width=960}
 :::
 
 
@@ -192,7 +219,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-6.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-8.png){width=960}
 :::
 
 
@@ -204,7 +231,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 47,020.77 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-7.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-9.png){width=960}
 :::
 
 
@@ -216,7 +243,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 467,480.1 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-8.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-10.png){width=960}
 :::
 
 
@@ -228,7 +255,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 11,949.19 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-9.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-11.png){width=960}
 :::
 
 
@@ -240,7 +267,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 3,683.951 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-10.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-12.png){width=960}
 :::
 
 
@@ -252,7 +279,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 23,894.96 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-11.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-13.png){width=960}
 :::
 
 
@@ -264,7 +291,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 108,332.4 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-12.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-14.png){width=960}
 :::
 
 
@@ -272,11 +299,23 @@ The following set of figures display observed and predicted values of mortality 
 - Total population: 5,119,855 
 - Total official COVID deaths in 2020 (Our World in Data): 2,156 
 - Total official COVID deaths in 2021  (Our World in Data): 5,198 
-- Total excess deaths in 2020  (WHO): 738.0506 
+- Total excess deaths in 2020  (WHO):  
 - Total excess deaths in 2021  (WHO): 4,704.336 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-13.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-15.png){width=960}
+:::
+
+
+#### Cuba 
+- Total population: 11,284,757 
+- Total official COVID deaths in 2020 (Our World in Data): 145 
+- Total official COVID deaths in 2021  (Our World in Data): 8,177 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 53,096.88 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-16.png){width=960}
 :::
 
 
@@ -288,7 +327,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 26,648.28 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-14.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-17.png){width=960}
 :::
 
 
@@ -300,7 +339,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 66,990.79 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-15.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-18.png){width=960}
 :::
 
 
@@ -312,7 +351,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 6,689.009 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-16.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-19.png){width=960}
 :::
 
 
@@ -324,7 +363,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 32,874.78 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-17.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-20.png){width=960}
 :::
 
 
@@ -336,7 +375,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-18.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-21.png){width=960}
 :::
 
 
@@ -348,7 +387,31 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 32,336.08 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-19.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-22.png){width=960}
+:::
+
+
+#### Estonia 
+- Total population: 1,326,400 
+- Total official COVID deaths in 2020 (Our World in Data): 229 
+- Total official COVID deaths in 2021  (Our World in Data): 1,703 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 3,037.613 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-23.png){width=960}
+:::
+
+
+#### Finland 
+- Total population: 5,516,103 
+- Total official COVID deaths in 2020 (Our World in Data): 587 
+- Total official COVID deaths in 2021  (Our World in Data): 1,118 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 2,868.022 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-24.png){width=960}
 :::
 
 
@@ -360,7 +423,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 37,445.36 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-20.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-25.png){width=960}
 :::
 
 
@@ -372,7 +435,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 65,350.31 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-21.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-26.png){width=960}
 :::
 
 
@@ -384,7 +447,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 17,255.76 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-22.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-27.png){width=960}
 :::
 
 
@@ -396,7 +459,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 19,485.75 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-23.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-28.png){width=960}
 :::
 
 
@@ -408,7 +471,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 36,476.57 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-24.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-29.png){width=960}
 :::
 
 
@@ -420,7 +483,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 12,268.29 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-25.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-30.png){width=960}
 :::
 
 
@@ -432,19 +495,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 26,972.14 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-26.png){width=960}
-:::
-
-
-#### Ireland 
-- Total population: 4,939,931 
-- Total official COVID deaths in 2020 (Our World in Data): 2,265 
-- Total official COVID deaths in 2021  (Our World in Data): 3,826 
-- Total excess deaths in 2020  (WHO): 1,601.448 
-- Total excess deaths in 2021  (WHO):  
-
-::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-27.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-31.png){width=960}
 :::
 
 
@@ -456,7 +507,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 159,238.4 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-28.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-32.png){width=960}
 :::
 
 
@@ -468,7 +519,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-29.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-33.png){width=960}
 :::
 
 
@@ -480,7 +531,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 4,795.487 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-30.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-34.png){width=960}
 :::
 
 
@@ -492,7 +543,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 75,106.86 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-31.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-35.png){width=960}
 :::
 
 
@@ -500,11 +551,11 @@ The following set of figures display observed and predicted values of mortality 
 - Total population: 124,706,807 
 - Total official COVID deaths in 2020 (Our World in Data): 3,414 
 - Total official COVID deaths in 2021  (Our World in Data): 14,979 
-- Total excess deaths in 2020  (WHO): -21,921.16 
+- Total excess deaths in 2020  (WHO):  
 - Total excess deaths in 2021  (WHO): 22,117.4 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-32.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-36.png){width=960}
 :::
 
 
@@ -516,7 +567,67 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 52,050.25 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-33.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-37.png){width=960}
+:::
+
+
+#### Kyrgyzstan 
+- Total population: 6,423,515 
+- Total official COVID deaths in 2020 (Our World in Data): 1,355 
+- Total official COVID deaths in 2021  (Our World in Data): 1,447 
+- Total excess deaths in 2020  (WHO): 7,420.808 
+- Total excess deaths in 2021  (WHO):  
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-38.png){width=960}
+:::
+
+
+#### Republic of Korea 
+- Total population: 51,776,733 
+- Total official COVID deaths in 2020 (Our World in Data): 900 
+- Total official COVID deaths in 2021  (Our World in Data): 4,725 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 8,229.939 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-39.png){width=960}
+:::
+
+
+#### Kuwait 
+- Total population: 4,360,120 
+- Total official COVID deaths in 2020 (Our World in Data): 932 
+- Total official COVID deaths in 2021  (Our World in Data): 1,536 
+- Total excess deaths in 2020  (WHO): 3,203.663 
+- Total excess deaths in 2021  (WHO): 3,344.758 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-40.png){width=960}
+:::
+
+
+#### Lithuania 
+- Total population: 2,813,500 
+- Total official COVID deaths in 2020 (Our World in Data): 1,799 
+- Total official COVID deaths in 2021  (Our World in Data): 5,597 
+- Total excess deaths in 2020  (WHO): 6,154.16 
+- Total excess deaths in 2021  (WHO): 11,292.63 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-41.png){width=960}
+:::
+
+
+#### Latvia 
+- Total population: 1,892,761 
+- Total official COVID deaths in 2020 (Our World in Data): 635 
+- Total official COVID deaths in 2021  (Our World in Data): 3,935 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 6,846.926 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-42.png){width=960}
 :::
 
 
@@ -528,7 +639,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 10,905.46 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-34.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-43.png){width=960}
 :::
 
 
@@ -540,7 +651,31 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 315,216 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-35.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-44.png){width=960}
+:::
+
+
+#### Mongolia 
+- Total population: 3,293,544 
+- Total official COVID deaths in 2020 (Our World in Data): 1 
+- Total official COVID deaths in 2021  (Our World in Data): 1,985 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 2,599.867 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-45.png){width=960}
+:::
+
+
+#### Nicaragua 
+- Total population: 6,754,777 
+- Total official COVID deaths in 2020 (Our World in Data): 165 
+- Total official COVID deaths in 2021  (Our World in Data): 52 
+- Total excess deaths in 2020  (WHO): 8,118.323 
+- Total excess deaths in 2021  (WHO):  
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-46.png){width=960}
 :::
 
 
@@ -552,7 +687,19 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 16,001.69 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-36.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-47.png){width=960}
+:::
+
+
+#### Oman 
+- Total population: 4,542,924 
+- Total official COVID deaths in 2020 (Our World in Data): 1,497 
+- Total official COVID deaths in 2021  (Our World in Data): 2,986 
+- Total excess deaths in 2020  (WHO): 2,534.465 
+- Total excess deaths in 2021  (WHO): 5,942.41 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-48.png){width=960}
 :::
 
 
@@ -564,7 +711,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-37.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-49.png){width=960}
 :::
 
 
@@ -576,7 +723,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 124,084.2 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-38.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-50.png){width=960}
 :::
 
 
@@ -588,7 +735,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 100,112.2 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-39.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-51.png){width=960}
 :::
 
 
@@ -600,7 +747,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 12,245.21 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-40.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-52.png){width=960}
 :::
 
 
@@ -608,11 +755,11 @@ The following set of figures display observed and predicted values of mortality 
 - Total population: 6,615,894 
 - Total official COVID deaths in 2020 (Our World in Data): 2,220 
 - Total official COVID deaths in 2021  (Our World in Data): 14,404 
-- Total excess deaths in 2020  (WHO): 1,423.428 
+- Total excess deaths in 2020  (WHO):  
 - Total excess deaths in 2021  (WHO): 18,371.62 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-41.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-53.png){width=960}
 :::
 
 
@@ -624,7 +771,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 76,235.53 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-42.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-54.png){width=960}
 :::
 
 
@@ -636,7 +783,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 713,027.8 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-43.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-55.png){width=960}
 :::
 
 
@@ -648,7 +795,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 36,442.32 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-44.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-56.png){width=960}
 :::
 
 
@@ -660,19 +807,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 20,291.01 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-45.png){width=960}
-:::
-
-
-#### Slovenia 
-- Total population: 2,113,213 
-- Total official COVID deaths in 2020 (Our World in Data): 2,981 
-- Total official COVID deaths in 2021  (Our World in Data): 3,139 
-- Total excess deaths in 2020  (WHO): 1,317.898 
-- Total excess deaths in 2021  (WHO): 241.1147 
-
-::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-46.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-57.png){width=960}
 :::
 
 
@@ -684,7 +819,19 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 3,273.921 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-47.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-58.png){width=960}
+:::
+
+
+#### Thailand 
+- Total population: 71,392,182 
+- Total official COVID deaths in 2020 (Our World in Data): 61 
+- Total official COVID deaths in 2021  (Our World in Data): 21,637 
+- Total excess deaths in 2020  (WHO): 7,530.558 
+- Total excess deaths in 2021  (WHO): 66,204.06 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-59.png){width=960}
 :::
 
 
@@ -696,7 +843,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-48.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-60.png){width=960}
 :::
 
 
@@ -708,7 +855,19 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 144,710.5 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-49.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-61.png){width=960}
+:::
+
+
+#### Uruguay 
+- Total population: 3,422,352 
+- Total official COVID deaths in 2020 (Our World in Data): 168 
+- Total official COVID deaths in 2021  (Our World in Data): 6,000 
+- Total excess deaths in 2020  (WHO):  
+- Total excess deaths in 2021  (WHO): 5,906.342 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-62.png){width=960}
 :::
 
 
@@ -720,7 +879,19 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 501,112.5 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-50.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-63.png){width=960}
+:::
+
+
+#### Uzbekistan 
+- Total population: 33,520,434 
+- Total official COVID deaths in 2020 (Our World in Data): 614 
+- Total official COVID deaths in 2021  (Our World in Data): 871 
+- Total excess deaths in 2020  (WHO): 15,794.15 
+- Total excess deaths in 2021  (WHO): 14,826.1 
+
+::: {.cell-output-display}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-64.png){width=960}
 :::
 
 
@@ -732,7 +903,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO): 189,834.3 
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-51.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-65.png){width=960}
 :::
 :::
 
