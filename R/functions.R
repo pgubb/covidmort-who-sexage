@@ -245,10 +245,21 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
     summarize(
       NxTOT = sum(Nx)
     ) %>%
+    ungroup() %>%
     select(iso3c, NxTOT)
 
   # Creating a df with the male+female excess deaths for 2020 and 2021
-  xdtot <- clean_data %>%
+  xdtot_wide <- clean_data %>%
+    group_by(iso3c, Year) %>%
+    # Adding population across age and sex
+    summarize(
+      excess_deaths_total = sum(excess.mean)
+    ) %>%
+    pivot_wider(values_from = excess_deaths_total, names_from = Year, names_prefix = "excess_deaths_total_") %>%
+    ungroup() %>%
+    select(iso3c, excess_deaths_total_2020, excess_deaths_total_2021)
+
+  xdtot_long <- clean_data %>%
     group_by(iso3c, Year) %>%
     # Adding population across age and sex
     summarize(
@@ -279,20 +290,23 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
   bind_rows(deaths_excess, deaths_allcauses) %>%
       # Incorporating total population data
       left_join(pop, by = "iso3c") %>%
-      left_join(xdtot, by = c("iso3c", "Year")) %>%
+      left_join(xdtot_wide, by = c("iso3c")) %>%
+      left_join(xdtot_long, by = c("iso3c", "Year")) %>%
       left_join(country_income, by = "iso3c") %>%
       left_join(covid_deaths, by = "iso3c") %>%
       left_join(data_types, by = "iso3c") %>%
 
       mutate(
-        keepobs = ifelse((reported_gender_2020 == params[["USE_ACTUALS_BYSX_2020"]] & Year == 2020) |
+        excess_deaths_total = ifelse(source == "All cause deaths (expected)", 999999, excess_deaths_total),
+        keepobs_reported = ifelse((reported_gender_2020 == params[["USE_ACTUALS_BYSX_2020"]] & Year == 2020) |
                            (reported_gender_2021 == params[["USE_ACTUALS_BYSX_2021"]] & Year == 2021), 1, 0)
       ) %>%
 
       # Applying inclusion criteria
-      filter(keepobs == 1) %>%
+      filter(keepobs_reported == 1) %>%
 
       filter(Age_Lower >= params[["AGE_THRESHOLD"]]) %>%
+      filter(excess_deaths_total_2020 >= params[["DEATHS_THRESHOLD"]] | excess_deaths_total_2021 >= params[["DEATHS_THRESHOLD"]]) %>%
       filter(excess_deaths_total >= params[["DEATHS_THRESHOLD"]]) %>%
       #filter(NxTOT >= params[["POP_THRESHOLD"]]) %>%
       filter(iso3c %not_in% params[["COUNTRY_EXCLUSIONS"]]) %>%
