@@ -18,16 +18,16 @@ This paper seeks to understand how mortality risks from COVID for men and women 
 
 ## Data
 
-This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:"0-24" , "25-34" , 35-44", "45-54", "55-64", "65-74", "75-84", ">85". However, only age groups at or above 45 years of age are considered. 
+This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:"0-24" , "25-34" , 35-44", "45-54", "55-64", "65-74", "75-84", ">85". However, only age groups at or above 45 years of age are considered in this analysis. 
 
 Out of 195 countries in the WHO database, 75 countries have excess death estimates based on reported all-cause death records disaggregated by gender for 2020 and of these, 61 also use reported deaths by gender and age for 2021.
 
-Country inclusion criteria for this analysis are as follows: 
+Two inclusion criteria for this analysis are applied: 
 
-- Have reported all-cause data disaggregated by age and sex in 2020 or 2021
-- Have total excess deaths (for both sexes) of at least 2000 deaths in 2020 or 2021
+- Countries with all-cause data reported by both age and sex in 2020 or 2021
+- Countries with total excess deaths (both sexes) of at least 2000 in 2020 or 2021
 
-- The following 67 countries are included in this analysis: Albania, Argentina, Australia, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Cuba, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, Estonia, Finland, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Kyrgyzstan, Republic of Korea, Kuwait, Lithuania, Latvia, Republic of Moldova, Mexico, Mongolia, Nicaragua, Netherlands, Oman, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Sweden, Thailand, Tunisia, Ukraine, Uruguay, USA, Uzbekistan, South Africa, Ireland, Malaysia
+- The following 66 countries are included in this analysis: Albania, Argentina, Australia, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Cuba, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, Estonia, Finland, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Kyrgyzstan, Republic of Korea, Kuwait, Lithuania, Latvia, Republic of Moldova, Mexico, Mongolia, Nicaragua, Netherlands, Oman, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Sweden, Thailand, Tunisia, Ukraine, Uruguay, USA, Uzbekistan, South Africa, Malaysia
 - 54 countries meet the inclusion criteria in 2020
 - 57 countries meet the inclusion criteria in 2021
 
@@ -41,7 +41,7 @@ Country inclusion criteria for this analysis are as follows:
 |               2|               13|14,080 - 19,630                           |Albania, Azerbaijan, Bosnia and Herzegovina, Brazil, Colombia, Dominican Republic, Georgia, Iran (Islamic Republic of), Republic of Moldova, Mexico, Serbia, Thailand, South Africa |
 |               3|               13|21,260 - 32,600                           |Argentina, Bulgaria, Chile, Costa Rica, Greece, Croatia, Kazakhstan, Latvia, Panama, Romania, Russian Federation, Uruguay, Malaysia                                                 |
 |               4|               13|32,740 - 46,190                           |Czechia, Spain, Estonia, Hungary, Israel, Italy, Japan, Republic of Korea, Lithuania, Oman, Poland, Portugal, Slovakia                                                              |
-|               5|               14|49,140 - 71,070                           |Australia, Austria, Belgium, Canada, Switzerland, Germany, Finland, France, The United Kingdom, Kuwait, Netherlands, Sweden, USA, Ireland                                           |
+|               5|               13|49,140 - 71,070                           |Australia, Austria, Belgium, Canada, Switzerland, Germany, Finland, France, The United Kingdom, Kuwait, Netherlands, Sweden, USA                                                    |
 :::
 :::
 
@@ -88,11 +88,11 @@ Table: Median and interquartile range of predictions are shown
 
 |group                             | Age_Lower|Quintile: 1      |Quintile: 2      |Quintile: 3      |Quintile: 4      |Quintile: 5      |
 |:---------------------------------|---------:|:----------------|:----------------|:----------------|:----------------|:----------------|
-|All cause deaths (expected): 2020 |        45|1.89 (1.54-2.63) |2.38 (1.9-2.89)  |2.94 (2.06-3.63) |3.23 (2.47-4.13) |2.26 (1.71-3.02) |
-|All cause deaths (expected): 2020 |        55|1.73 (1.47-2.15) |1.99 (1.7-2.31)  |2.33 (1.81-2.69) |2.5 (2.04-3)     |1.88 (1.53-2.31) |
-|All cause deaths (expected): 2020 |        65|1.59 (1.39-1.79) |1.67 (1.51-1.88) |1.84 (1.61-2)    |1.93 (1.67-2.19) |1.56 (1.37-1.79) |
-|All cause deaths (expected): 2020 |        75|1.44 (1.28-1.6)  |1.46 (1.28-1.61) |1.46 (1.34-1.57) |1.49 (1.36-1.63) |1.3 (1.19-1.42)  |
-|All cause deaths (expected): 2020 |        85|1.25 (1.12-1.45) |1.26 (1.06-1.42) |1.14 (1.04-1.31) |1.15 (1.05-1.26) |1.07 (0.95-1.18) |
+|All cause deaths (expected): 2020 |        45|1.89 (1.54-2.63) |2.38 (1.9-2.89)  |2.94 (2.06-3.63) |3.23 (2.47-4.13) |2.26 (1.71-3.05) |
+|All cause deaths (expected): 2020 |        55|1.73 (1.47-2.15) |1.99 (1.7-2.31)  |2.33 (1.81-2.69) |2.5 (2.04-3)     |1.88 (1.53-2.33) |
+|All cause deaths (expected): 2020 |        65|1.59 (1.39-1.79) |1.67 (1.51-1.88) |1.84 (1.61-2)    |1.93 (1.67-2.19) |1.57 (1.37-1.8)  |
+|All cause deaths (expected): 2020 |        75|1.44 (1.28-1.6)  |1.46 (1.28-1.61) |1.46 (1.34-1.57) |1.49 (1.36-1.63) |1.31 (1.19-1.42) |
+|All cause deaths (expected): 2020 |        85|1.25 (1.12-1.45) |1.26 (1.06-1.42) |1.14 (1.04-1.31) |1.15 (1.05-1.26) |1.07 (0.95-1.19) |
 |Excess deaths: 2020               |        45|2.13 (1.35-3.08) |2.97 (1.82-4.68) |2.28 (1.86-3.1)  |4.86 (3-7.8)     |3.64 (2.29-6.34) |
 |Excess deaths: 2020               |        55|2.18 (1.47-3)    |2.48 (1.73-3.35) |2.23 (1.92-2.79) |3.7 (2.57-5.11)  |2.89 (1.95-4.43) |
 |Excess deaths: 2020               |        65|2.18 (1.59-3)    |2.19 (1.76-2.67) |2.16 (1.91-2.61) |2.79 (2.15-3.43) |2.33 (1.72-3.18) |
@@ -907,18 +907,6 @@ The following set of figures display observed and predicted values of mortality 
 :::
 
 
-#### Ireland 
-- Total population: 4,939,931 
-- Total official COVID deaths in 2020 (Our World in Data): 2,265 
-- Total official COVID deaths in 2021  (Our World in Data): 3,826 
-- Total excess deaths in 2020  (WHO):  
-- Total excess deaths in 2021  (WHO):  
-
-::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-66.png){width=960}
-:::
-
-
 #### Malaysia 
 - Total population: 33,190,884 
 - Total official COVID deaths in 2020 (Our World in Data): 463 
@@ -927,7 +915,7 @@ The following set of figures display observed and predicted values of mortality 
 - Total excess deaths in 2021  (WHO):  
 
 ::: {.cell-output-display}
-![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-67.png){width=960}
+![](covidmort-who-sexage-results_files/figure-html/unnamed-chunk-8-66.png){width=960}
 :::
 :::
 

@@ -426,6 +426,7 @@ visualize_coeffs <- function(model_results, models = NULL, coefs = NULL) {
     ungroup() %>%
     mutate(
       fillvalue = estimate_interp2,
+      fillvalue = ifelse(estimate_interp2 >= 10, 10, fillvalue),
       fillvalue = ifelse(term_short == "a1", NA, fillvalue),
       maxfill = max(fillvalue, na.rm = TRUE),
       minfill = min(fillvalue, na.rm = TRUE),

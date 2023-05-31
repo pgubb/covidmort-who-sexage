@@ -250,6 +250,7 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
 
   # Creating a df with the male+female excess deaths for 2020 and 2021
   xdtot_wide <- clean_data %>%
+    #filter(Age_Lower >= params[["AGE_THRESHOLD"]]) %>%
     group_by(iso3c, Year) %>%
     # Adding population across age and sex
     summarize(
@@ -260,6 +261,7 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
     select(iso3c, excess_deaths_total_2020, excess_deaths_total_2021)
 
   xdtot_long <- clean_data %>%
+    #filter(Age_Lower >= params[["AGE_THRESHOLD"]]) %>%
     group_by(iso3c, Year) %>%
     # Adding population across age and sex
     summarize(
@@ -295,7 +297,6 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
       left_join(country_income, by = "iso3c") %>%
       left_join(covid_deaths, by = "iso3c") %>%
       left_join(data_types, by = "iso3c") %>%
-
       mutate(
         excess_deaths_total = ifelse(source == "All cause deaths (expected)", 999999, excess_deaths_total),
         keepobs_reported = ifelse((reported_gender_2020 == params[["USE_ACTUALS_BYSX_2020"]] & Year == 2020) |
@@ -303,9 +304,8 @@ prep_analysis_data <- function(clean_data, country_income, covid_deaths, data_ty
       ) %>%
 
       # Applying inclusion criteria
-      filter(keepobs_reported == 1) %>%
-
       filter(Age_Lower >= params[["AGE_THRESHOLD"]]) %>%
+      filter(keepobs_reported == 1) %>%
       filter(excess_deaths_total_2020 >= params[["DEATHS_THRESHOLD"]] | excess_deaths_total_2021 >= params[["DEATHS_THRESHOLD"]]) %>%
       filter(excess_deaths_total >= params[["DEATHS_THRESHOLD"]]) %>%
       #filter(NxTOT >= params[["POP_THRESHOLD"]]) %>%
