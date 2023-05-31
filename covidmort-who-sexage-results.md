@@ -28,8 +28,8 @@ Country inclusion criteria for this analysis are as follows:
 - Have total excess deaths (for both sexes) of at least 2000 deaths in 2020 or 2021
 
 - The following 67 countries are included in this analysis: Albania, Argentina, Australia, Austria, Azerbaijan, Belgium, Bulgaria, Bosnia and Herzegovina, Bolivia (Plurinational State of), Brazil, Canada, Switzerland, Chile, Colombia, Costa Rica, Cuba, Czechia, Germany, Dominican Republic, Ecuador, Egypt, Spain, Estonia, Finland, France, The United Kingdom, Georgia, Greece, Guatemala, Croatia, Hungary, Iran (Islamic Republic of), Iraq, Israel, Italy, Japan, Kazakhstan, Kyrgyzstan, Republic of Korea, Kuwait, Lithuania, Latvia, Republic of Moldova, Mexico, Mongolia, Nicaragua, Netherlands, Oman, Panama, Peru, Poland, Portugal, Paraguay, Romania, Russian Federation, Serbia, Slovakia, Sweden, Thailand, Tunisia, Ukraine, Uruguay, USA, Uzbekistan, South Africa, Ireland, Malaysia
-- 67 countries meet the inclusion criteria in 2020
-- 67 countries meet the inclusion criteria in 2021
+- 54 countries meet the inclusion criteria in 2020
+- 57 countries meet the inclusion criteria in 2021
 
 #### Table 1: Sample of countries in analysis data-set by GNI per capita (PPP) quintiles
 
