@@ -23,4 +23,4 @@ Running under: macOS Ventura 13.3.1
 The full workflow for data downloading, cleaning, analysis and visuazliation of results is set out in the file: *covidmort-who-sexage-results.qmd*. This is a quarto file which when run, generates as output the *covidmort-who-sexage-results.md* and *covidmort-who-sexage.html* files. The individual functions which perform the data downloading, data cleaning, data analysis and data visualization tasks are in the R subfolder. 
 
 **Outputs**
-All outputs used for the paper can be found in the files generated automatically when running the main .gmd file in */covidmort-who-sexage-results_files/figure-html*
+All outputs used for the paper can be found in the files generated automatically when running the main .qmd file in */covidmort-who-sexage-results_files/figure-html*
