@@ -1,0 +1,384 @@
+---
+title: "Age-sex patterns of COVID mortality across countries"
+format: 
+  html:
+    keep-md: true
+    toc: true
+    toc-depth: 6
+    toc-location: left
+---
+
+```{r}
+#| include: false
+
+source("R/functions.R")
+source("R/dataviz_functions.R")
+
+params <- list(
+  "AGE_THRESHOLD" = 45, # Only include age-groups at ar above this age
+  "POP_THRESHOLD" = 1e6, # Only include countries with total population at or above this threshold
+  "DEATHS_THRESHOLD" = 2000, # Only include countries with total excess deaths (both sexes, above > 45) at end of 2020 at or above this threshold, 
+  "USE_ACTUALS_BYSX_2020" = 1,  # Use cases where actual deaths are the basis for ED estimates for males and females in 2020
+  "USE_ACTUALS_BYSX_2021" = 1, # Use cases where actual deaths are the basis for ED estimates for males and females in 2021
+  #"COUNTRY_EXCLUSIONS" = c("URY", "TUN") # Country-specific exclusions
+  "COUNTRY_EXCLUSIONS" = c("IRL") # Dropping Ireland manually 
+)
+
+############
+# DATA PREP
+############
+
+# Downloading Auxiliary data: Our World in Data Total Cumulative Official COVID deaths by country and year -----
+deaths_official <- owid()
+
+# Downloading Auxiliary data: GNI per capita -------
+income <- wdi()
+
+# Downloading WHO Excess death dataset  -------
+raw_data <- get_raw_data_fromfile()
+
+# Cleaning WHO Excess mortality dataset ------
+clean_data <- clean_raw_data(raw_data)
+
+# Creating an auxiliary file which identifies the type of death data underpinning WHO calculations -------
+who_data_types <- get_data_types(clean_data) 
+
+# Processing WHO Excess mortality dataset for analysis ------
+analysis_data <- prep_analysis_data(clean_data, income, deaths_official, who_data_types, params)
+
+
+############
+# RESULTS
+############
+
+# Running three candidate models and stacking them
+model_results <- stack_models(analysis_data) %>%
+                    left_join(income, by = "iso3c") %>% 
+                    left_join(get_pop(clean_data), by = "iso3c") %>% 
+                    left_join(get_countrytoiso(clean_data), by = "iso3c")
+
+# Running model and simulation -------------
+sims <- apply_simulate(analysis_data)
+
+# Creating summary statistics from the simulations and prepares a visualization dataset ---------
+simsummary_to_plot <- prep_sims_summary(sims)
+
+# Preparing actual observations ---------
+obs_to_plot <- prep_obs_data(analysis_data)
+
+# Vector of countries in analysis dataset ---------
+countries_in_analysis <- unique(analysis_data$Country)
+countries_in_2020 <- unique(pull(analysis_data %>% filter(Year == 2020 & source == "Excess deaths"), Country))
+countries_in_2021 <- unique(pull(analysis_data %>% filter(Year == 2021 & source == "Excess deaths"), Country))
+countries_in_2020_and_2021 <- intersect(countries_in_2020, countries_in_2021)
+
+```
+
+## Introduction
+
+This paper seeks to understand how mortality risks from COVID for men and women differ by age, and how gender differences in mortality risk from COVID compare to gender differences in mortality risks from all-causes. 
+
+## Data
+
+This analyses in this paper use global excess deaths associated with COVID-19 (modeled estimates) produced by the [Technical Advisory Group (TAG) on COVID-19 mortality assessment](https://www.who.int/data/sets/global-excess-deaths-associated-with-covid-19-modelled-estimates). Estimates of expected all-cause deaths (baseline), actual cause deaths and excess deaths are provided by country and 7 age groups:"0-24" , "25-34" , 35-44", "45-54", "55-64", "65-74", "75-84", ">85". However, only age groups at or above `r params[["AGE_THRESHOLD"]]` years of age are considered in this analysis. 
+
+Out of 195 countries in the WHO database, 75 countries have excess death estimates based on reported all-cause death records disaggregated by gender for 2020 and of these, 61 also use reported deaths by gender and age for 2021.
+
+Two inclusion criteria for this analysis are applied: 
+
+- Countries with all-cause data reported by both age and sex in 2020 or 2021
+- Countries with total excess deaths (both sexes) of at least `r params[["DEATHS_THRESHOLD"]]` in 2020 or 2021
+
+- The following `r length(countries_in_analysis)` countries are included in this analysis: `r paste(countries_in_analysis, collapse= ", ")`
+- `r length(countries_in_2020)` countries meet the inclusion criteria in 2020
+- `r length(countries_in_2021)` countries meet the inclusion criteria in 2021
+
+#### Table 1: Sample of countries in analysis data-set by GNI per capita (PPP) quintiles
+```{r fig.width = 12, fig.asp = 0.9}
+#| label: tab-1
+#| echo: false
+#| warning: false
+
+sample_summary_table(analysis_data) %>%
+  kbl(format = "markdown") %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+```
+
+## Results
+
+### Figure 0: Sex-ratio in mortality (expected and actual all-cause deaths in 2020): Observations
+Not included in final paper
+```{r, fig.width = 12, fig.asp = 1.4}
+#| label: fig-0
+#| echo: false
+#| warning: false
+
+plot_obs(obs_to_plot, slct_source =  c("All-cause deaths (expected)", "All-cause deaths (actual)"))
+
+```
+
+### Figure 1: Sex-ratio in mortality (all-causes in 2020): Observations
+```{r fig.width = 12, fig.asp = 1.2}
+#| label: fig-1
+#| echo: false
+#| warning: false
+
+plot_obs(obs_to_plot, slct_source = "All-cause deaths (expected)", title = "Expected all-cause male-female mortality ratio, 2020") + theme(legend.position = "none")
+
+```
+
+### Figure 2: Sex-ratio in mortality (all-causes in 2020): Observations
+```{r fig.width = 12, fig.asp = 1.2}
+#| label: fig-2
+#| echo: false
+#| warning: false
+
+#plot_obs(obs_to_plot, slct_source = "Excess deaths")
+
+plot_obs(obs_to_plot, slct_source = "Excess deaths", title = "Excess male-female mortality ratio, 2020") + theme(legend.position = "none")
+
+# Examining some outliers in the data
+
+analysis_data %>% 
+  filter(Country %in% c("Iraq", "Germany", "Portugal", "Hungary", "Dominican Republic") & source == "Excess deaths" & Year == 2020) %>% 
+  dplyr::select(source, Country, Year, Sex_name, Age_Int, Deaths, Nx, mr) %>% 
+  write_csv("outliers.csv")
+  
+
+```
+
+### Table 2A: Poisson model results
+```{r fig.width = 12, fig.asp = 1.4}
+#| label: tab-2
+#| echo: false
+#| warning: false
+
+visualize_coeffs(model_results, models = "3. Adjusted model (Deaths ~ a + b*male + c*age + d*male*age)")
+
+```
+
+### Table 2B: Poisson model results
+```{r fig.width = 12, fig.asp = 0.4}
+#| label: tab-3
+#| echo: false
+#| warning: false
+
+visualize_coeffs_bytercile(model_results, models = "3. Adjusted model (Deaths ~ a + b*male + c*age + d*male*age)")
+
+```
+
+### Relationship between predicted sex-differences in mortality and country income
+
+#### Figure 3: Sex ratio of mortality by age, year and country income terciles
+```{r fig.width = 12, fig.asp = 0.5}
+#| label: fig-3
+#| echo: false
+
+sims_summary <- prep_sims_summary_by_inc_quint(sims, income)
+
+plot_data_v_tercile(sims_summary, slct_metric = "Relative risk (Males/Females)")
+
+
+```
+
+#### Table 3: Sex ratio of mortality by age, year and country income terciles
+```{r}
+#| label: tab-4
+#| echo: false
+#| warning: false
+
+prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All-cause deaths (expected)", "Excess deaths")) %>%
+  arrange(group) %>%
+  kbl(caption = "Median and interquartile range of predictions are shown", format = 'markdown') %>%
+  kable_classic(full_width = F, html_font = "Cambria")  %>% 
+  kable_styling(font_size = 12)
+
+# prep_results_table(sims_summary, slct_metric = "Relative risk (Males/Females)", slct_source = c("All-cause deaths (expected)", "Excess deaths")) %>%
+#   arrange(group) %>% select(-group) %>%
+#   kbl(caption = "Median and interquartile range of predictions are shown") %>%
+#   kable_classic(full_width = F, html_font = "Cambria") %>%
+#   pack_rows("All-cause deaths (expected): 2020", 1, 5) %>%
+#   pack_rows("Excess deaths: 2020", 6, 10) %>%
+#   pack_rows("Excess deaths: 2021", 11, 15)
+
+```
+
+#### Figure 4: Sex-ratio of mortality vs. country income 
+All available data (composition of countries changes from 2020 to 2021)
+
+```{r fig.width = 12, fig.asp = 0.818}
+#| label: fig-4
+#| echo: false
+
+caption <- str_wrap(
+  paste0("Note: Results are based on the country-specific Poisson model described in the text applied to the WHO Global Excess Deaths dataset. Each point represents the median predicted relative risk of mortality between men and women for a single country from a simulation of 1,000 parameter draws of the Poisson model. The lines for each group are loess fits of this median ratio of predicted mortality, using 85% of the points in the neighborhood at each point along the x-axis. The shaded areas show the lower 25th and upper 75th percentiles of the predictions. The y-axis is censored at 10 in the figure; in 2020, there are 2 countries with data points above this cut-off: Dominican Republic (all age-groups) (sex ratio 11-22, GNI per cap $18,080), Netherlands (age 45-54) (sex ratio 12.9, GNI per cap $58,980)"), 
+  115)
+
+plot_data_v_income(simsummary_to_plot %>% filter(source != "All-cause deaths (actual)"), slct_metric = "Relative risk (Males/Females)", group_data = NULL, income_data = income, caption, alpha = 0.85)
+
+
+```
+
+#### Figure 5: Sex-ratio of mortality vs. country income 
+Keeping composition of countries constant (only countries with all cause deaths disaggregated by gender in 2020 & 2021)
+```{r fig.width = 12, fig.asp = 0.818}
+#| label: fig-5
+#| echo: false
+
+caption <- str_wrap(
+  paste0("Note: Results are based on the country-specific Poisson model described in the text applied to the WHO Global Excess Deaths dataset, restricted to 46 countries with each of the three mortality series (all-cause 2020, excess deaths 2020, and excess deaths 2021). Each point represents the country-specific median of the ratio of predicted mortality for men and predicted mortality for women (by age group) based on a simulation of 1,000 parameter draws of the Poisson model. The lines for each group are loess fits of this median ratio of predicted mortality, using 85% of the points in the neighborhood at each point along the x-axis. The shaded areas show the lower 25th and upper 75th percentiles of the predictions. The y-axis is censored at 10 in the figure; in 2020, there are 2 countries with data points above this cut-off: Dominican Republic (all age-groups) (sex ratio 11-22, GNI per cap $18,080), Netherlands (age 45-54) (sex ratio 12.9, GNI per cap $58,980)"), 
+  115)
+
+plot_data_v_income(simsummary_to_plot %>% filter(source != "All-cause deaths (actual)") %>% filter(Country %in% countries_in_2020_and_2021), slct_metric = "Relative risk (Males/Females)", income_data = income, group_data = NULL, caption, alpha = 0.85)
+
+
+```
+
+
+## Annex 
+
+### Observatios and predictions by country
+
+The following set of figures display observed and predicted values of mortality rates, the sex-ratio of mortality rates (males/females) and the sex-gap of mortality rates (males - females) by age, for each country in the analysis dataset. 
+
+```{r fig.width = 10, fig.asp = 0.818}
+#| results: 'asis'
+#| echo: false
+
+# Creating a figure for each country -------
+
+for (country in countries_in_analysis) {
+  
+  iso <- unique(pull(obs_to_plot %>% filter(Country == country), iso3c))
+  pop <- unique(pull(analysis_data %>% filter(iso3c == iso), NxTOT))
+  offcov20 <- unique(pull(deaths_official %>% filter(iso3c == iso), cum_covid_deaths_2020))
+  offcov21 <- unique(pull(deaths_official %>% filter(iso3c == iso), tot_covid_deaths_2021))
+  xdtot20 <- unique(pull(analysis_data %>% filter(iso3c == iso & Year == 2020 & source == "Excess deaths"), excess_deaths_total))
+  xdtot21 <- unique(pull(analysis_data %>% filter(iso3c == iso & Year == 2021 & source == "Excess deaths"), excess_deaths_total))
+  
+  cat("\n")  
+  cat("####",country, "\n")
+  cat("- Total population:", prettyNum(pop, big.mark = ","), "\n")
+  cat("- Total official COVID deaths in 2020 (Our World in Data):", prettyNum(offcov20, big.mark = ","), "\n")
+  cat("- Total official COVID deaths in 2021  (Our World in Data):", prettyNum(offcov21, big.mark = ","), "\n")
+  cat("- Total excess deaths in 2020  (WHO):", prettyNum(xdtot20, big.mark = ","), "\n")
+  cat("- Total excess deaths in 2021  (WHO):", prettyNum(xdtot21, big.mark = ","), "\n")
+  cat("\n")  
+   
+  print(plot_obs_and_preds(predictions = simsummary_to_plot %>% filter(source != "All-cause deaths (actual)"), observations = obs_to_plot %>% filter(source != "All-cause deaths (actual)"), iso = iso))
+   
+}
+
+
+```
+
+<!-- ### Poisson regression coefficients  -->
+
+<!-- #### Unadjusted model -->
+<!-- ```{r fig.width = 10, fig.asp = 1.5} -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+
+<!-- visualize_coeffs(model_results, models = "1. Unadjusted model (Deaths ~ a + b*male)") -->
+
+<!-- ``` -->
+
+<!-- #### Age-adjusted model (no interaction) -->
+<!-- ```{r fig.width = 10, fig.asp = 1.5} -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+
+<!-- visualize_coeffs(model_results, models = "2. Adjusted model (Deaths ~ a + b*male + c*age)") -->
+
+<!-- ``` -->
+
+
+<!-- ### Relationship between sex-differences in mortality and country income -->
+
+<!-- #### Mortality rates -->
+
+<!-- ##### Observations -->
+<!-- ```{r fig.width = 10, fig.asp = 0.818} -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+
+<!-- caption <- str_wrap( -->
+<!--   paste0("Source: Author's calculations using WHO excess death estimates by sex.  -->
+<!--          Notes: Each point represents the observed mortality rate for men and women for each country/age-group combination. Observed excess mortality rates less than 0 are recoded to 1. Only countries with actual all cause-deaths in 2020 available for both men and women by age are used."),  -->
+<!--   115) -->
+
+<!-- plot_data_v_income(obs_to_plot, slct_metric = "Mortality rate (per 100,000) [log-scale]", group_data = NULL, income_data = income, caption) -->
+
+<!-- ``` -->
+
+<!-- ##### Predictions -->
+<!-- ```{r fig.width = 10, fig.asp = 0.818} -->
+<!-- #| echo: false -->
+<!-- #| warning: false -->
+<!-- #|  -->
+<!-- caption <- str_wrap( -->
+<!--   paste0("Source: Author's calculations using WHO excess death estimates by sex.  -->
+<!--          Notes: Each point represents the median predicted mortality rate for men and women at each age for a single country from a simulation of 1,000 parameter draws from a Poisson model Only countries with actual all cause-deaths in 2020 available for both men and women by age are used."),  -->
+<!--   115) -->
+
+<!-- plot_data_v_income(simsummary_to_plot, slct_metric = "Mortality rate (per 100,000) [log-scale]", income_data = income, group_data = NULL, caption) -->
+
+<!-- ``` -->
+
+<!-- #### Sex-ratio in mortality rates -->
+
+<!-- ##### Observations -->
+<!-- ```{r fig.width = 10, fig.asp = 0.818} -->
+<!-- #| echo: false -->
+
+<!-- caption <- str_wrap( -->
+<!--   paste0("Source: Author's calculations using WHO excess death estimates by sex.  -->
+<!--          Notes: In cases where negative excess mortality rates are less than 0 for men or women, those values are recoded to 1. Observed sex ratios greater than 20 are recoded to 20. Each point represents the observed relative risk of mortality between men and women for a single country/age-group combination. Only countries with actual all cause-deaths in 2020 available for both men and women by age are used."),  -->
+<!--   115) -->
+
+<!-- plot_data_v_income(obs_to_plot, slct_metric = "Relative risk (Males/Females)", income_data = income, group_data = NULL, caption) -->
+
+
+<!-- ``` -->
+
+<!-- ##### Predictions -->
+<!-- ```{r fig.width = 10, fig.asp = 0.818} -->
+<!-- #| echo: false -->
+
+<!-- caption <- str_wrap( -->
+<!--   paste0("Source: Author's calculations using WHO excess death estimates by sex.  -->
+<!--          Notes: Each point represents the median predicted relative risk of mortality between men and women for a single country from a simulation of 1,000 parameter draws from a Poisson model. Only countries with actual all cause-deaths in 2020 available for both men and women by age are used."),  -->
+<!--   115) -->
+
+<!-- plot_data_v_income(simsummary_to_plot, slct_metric = "Relative risk (Males/Females)", income_data = income, group_data = NULL, caption) -->
+
+
+<!-- ``` -->
+
+<!-- #### Sex-gap in mortality rates -->
+
+<!-- ##### Observations -->
+<!-- ```{r fig.width = 10, fig.asp = 0.818} -->
+<!-- #| echo: false -->
+
+<!-- caption <- str_wrap( -->
+<!--   paste0("Source: Author's calculations using WHO excess death estimates by sex.  -->
+<!--          Notes: Each point represents the observed difference in mortality between men and women for a single country/age-group. Only countries with actual all cause-deaths in 2020 available for both men and women by age are used."),  -->
+<!--   115) -->
+<!-- plot_data_v_income(obs_to_plot, slct_metric = "Absolute risk difference (Males - Females)", income_data = income, group_data = NULL, caption) -->
+
+<!-- ``` -->
+
+<!-- ##### Predictions -->
+<!-- ```{r fig.width = 10, fig.asp = 0.818} -->
+<!-- #| echo: false -->
+
+<!-- caption <- str_wrap( -->
+<!--   paste0("Source: Author's calculations using WHO excess death estimates by sex.  -->
+<!--          Notes: Each point represents the median predicted risk difference of mortality between men and women for a single country/age-group from a simulation of 1,000 parameter draws from a Poisson model. Only countries with actual all cause-deaths in 2020 available for both men and women by age are used."),  -->
+<!--   115) -->
+<!-- plot_data_v_income(simsummary_to_plot, slct_metric = "Absolute risk difference (Males - Females)", income_data = income, group_data = NULL, caption) -->
+
+<!-- ``` -->
+
