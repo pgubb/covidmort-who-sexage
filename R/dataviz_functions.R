@@ -663,3 +663,121 @@ visualize_coeffs_bytercile <- function(model_results, models = NULL, coefs = NUL
 
 
 }
+
+combine_tables <- function(model_results, models = NULL, coefs = NULL) {
+  # This function creates a table that combines Tables 2 and 3 into a single, large table. 
+  
+  model_results %>%
+    filter(source  != "All-cause deaths (actual)") -> model_results
+  
+  model_results %>%
+    ungroup() %>%
+    mutate(
+      gnipcap_terciles = cut(gni_pcap_ppp, breaks = quantile(gni_pcap_ppp, probs = seq(0, 1, 1/3)), label = FALSE, ordered_result = TRUE, include.lowest = TRUE),
+      gnipcap_terciles_lab = paste("Tercile", gnipcap_terciles)
+    ) -> model_results
+  
+  caption = "Note: Columns 1-4 are regression coefficients based on the country-specific Poisson model described in the text applied to the WHO Global Excess Deaths dataset.
+  Column 1 is the predicted female mortality per 100,000 at age 65.
+  Column 2 is the predicted ratio of male-to-female mortality at age 65.
+  Columns 3 & 4 is the increase in mortality risk for women and men respectively associated with an additional 10 years in age.
+  The first four rows in this table show the population weighted averages of the country specific coefficients overall and by income terciles.
+  In 2020, for all age groups at or above 55, excess death estimates for males in Thailand are negative, since these values were bottom coded to 0 the sex-ratio at age 65 is 0 and the association of excess deaths with age for males is also 0.
+  Countries are sorted by GNI per capita (PPP)"
+  
+  if(!is.null(coefs)) {
+    model_results %>% filter(term %in% coefs) -> model_results
+  }
+  
+  if(!is.null(models)) {
+    model_results %>% filter(model_label %in% models) -> model_results
+  }
+  
+  # Computing the population weighted average coefficient
+  
+  model_results %>%
+    group_by(source, Year, model_no, model_label, term_short, term_label2, term_label3) %>%
+    summarize(
+      estimate = weighted.mean(estimate,  w=NxTOT, na.rm = TRUE),
+      estimate_interp = weighted.mean(estimate_interp,  w=NxTOT, na.rm = TRUE),
+      estimate_interp2 = weighted.mean(estimate_interp2,  w=NxTOT, na.rm = TRUE),
+      N = 1,
+      Nobs = sum(N)
+    ) %>%
+    mutate(
+      Country = "Average (all countries)",
+      gni_pcap_ppp = -1e6,
+      gnipcap_terciles_lab = ""
+    ) %>%
+    ungroup() -> average
+  
+  model_results %>%
+    group_by(source, gnipcap_terciles_lab, Year, model_no, model_label, term_short, term_label2, term_label3) %>%
+    summarize(
+      estimate = weighted.mean(estimate,  w=NxTOT, na.rm = TRUE),
+      estimate_interp = weighted.mean(estimate_interp,  w=NxTOT, na.rm = TRUE),
+      estimate_interp2 = weighted.mean(estimate_interp2,  w=NxTOT, na.rm = TRUE),
+      N = 1,
+      Nobs = sum(N)
+    ) %>%
+    mutate(
+      Country = paste(gnipcap_terciles_lab, "average"),
+      gni_pcap_ppp = ifelse(gnipcap_terciles_lab == "Tercile 1", 1, ifelse(gnipcap_terciles_lab == "Tercile 2", 2, 3)),
+      gnipcap_terciles_lab = ""
+    ) %>%
+    ungroup() -> average_by_tercile
+  
+  data_to_plot <- bind_rows(model_results, average, average_by_tercile)
+  
+  # By country & income group (Tile chart)
+  data_to_plot <- data_to_plot %>%
+    ungroup() %>%
+    mutate(
+      gnipcap_terciles_lab = factor(gnipcap_terciles_lab, levels = c("", "Tercile 1", "Tercile 2", "Tercile 3"), ordered = TRUE),
+      fillvalue = estimate_interp2,
+      fillvalue = ifelse(estimate_interp2 >= 7, 7, fillvalue),
+      fillvalue = ifelse(term_short == "a1", NA, fillvalue),
+      maxfill = max(fillvalue, na.rm = TRUE),
+      minfill = min(fillvalue, na.rm = TRUE),
+      fillvalue = (fillvalue - minfill)/ (maxfill - minfill),
+      #fillcolor = ifelse(estimate_interp < 1, "red", "blue"),
+      #fillcolor = ifelse(exp(estimate) > 300, NA, estimate_interp),
+      #fillcolor = ifelse(round(exp(estimate), 1) == 0, NA, estimate_interp),
+      #fillcolor = ifelse(term_short == "a1", NA, estimate_interp),
+      facet_label = paste0(source, ":", Year),
+      value_label = ifelse(term_short == "a1", prettyNum(round(estimate_interp2, 1), big.mark = ","), round(estimate_interp2, 2)),
+      drop = ifelse(source == "All-cause deaths (expected)" & Year == 2021, 1, 0),
+      income = ifelse(Country == "Average*", "", income),
+      income = factor(income, levels = c("", "Lower middle income", "Upper middle income", "High income"), ordered = TRUE)
+    ) %>%
+    filter(drop == 0)
+  
+  #subtitle <- str_wrap(unique(data_to_plot$term_label2), 180)
+  
+  ggplot(data = data_to_plot,
+         aes(y = fct_reorder(Country, gni_pcap_ppp, .desc = TRUE),
+             x = term_label3,
+             fill = fillvalue)) +
+    facet_grid(cols = vars(str_wrap(facet_label, 20)), rows = vars(gnipcap_terciles_lab), switch = "y", scales = "free_y", space = "free_y") +
+    geom_tile(alpha = 0.7) +
+    #geom_hline(yintercept = 3.5, color = "grey50", size = 0.5) +
+    geom_text(aes(label = value_label), color = "black", size = 3.75) +
+    scale_x_discrete(position = "top") +
+    scale_color_identity() +
+    #scale_fill_identity() +
+    scale_fill_distiller(palette = "YlOrRd", direction = 1, na.value = "grey70") +
+    labs(
+      title =  NULL,
+      #subtitle = subtitle,
+      y = NULL,
+      x = NULL,
+      caption = str_wrap(caption, 150)) +
+    theme_custom(scale_f = 1.15, legend.position = "none") +
+    theme(axis.text.y = element_text(size = 11))
+  
+  
+}
+
+#combine_tables(model_results, models = "3. Adjusted model (Deaths ~ a + b*male + c*age + d*male*age)")
+#ggsave("public_ignore/main figures/table23_combined.png", width = 12, height = 18, dpi = 300)
+
