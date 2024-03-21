@@ -140,10 +140,10 @@ plot_obs(obs_to_plot, slct_source = "Excess deaths", title = "Excess male-female
 
 # Examining some outliers in the data
 
-analysis_data %>% 
-  filter(Country %in% c("Iraq", "Germany", "Portugal", "Hungary", "Dominican Republic") & source == "Excess deaths" & Year == 2020) %>% 
-  dplyr::select(source, Country, Year, Sex_name, Age_Int, Deaths, Nx, mr) %>% 
-  write_csv("public_ignore/outliers.csv")
+#analysis_data %>% 
+#  filter(Country %in% c("Iraq", "Germany", "Portugal", "Hungary", "Dominican Republic") & source == "Excess deaths" & Year == 2020) %>% 
+#  dplyr::select(source, Country, Year, Sex_name, Age_Int, Deaths, Nx, mr) %>% 
+# write_csv("public_ignore/outliers.csv")
   
 
 ```
